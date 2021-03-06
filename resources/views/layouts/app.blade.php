@@ -119,7 +119,7 @@
                             <img src="{{asset('layout')}}/images/faces/face3.jpg" alt="image" class="profile-pic">
                         </div>
                         <div class="preview-item-content flex-grow">
-                            <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
+                            <h6 class="preview-subject ellipsis font-weight-normal"> {{auth()->user()->first_name .' '. auth()->user()->last_name}}
                             </h6>
                             <p class="font-weight-light small-text text-muted mb-0">
                                 Upcoming board meeting
@@ -171,9 +171,9 @@
                     </li>
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                        <span class="nav-profile-name">Johnson</span>
+                        <span class="nav-profile-name">{{auth()->user()->first_name .' '. auth()->user()->last_name}}</span>
                         <span class="online-status"></span>
-                        <img src="{{asset('layout')}}/images/faces/face28.png" alt="profile"/>
+                        <img src="{{asset('storage/file/'.auth()->user()->image)}}" alt="profile"/>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a href="{{route('profile')}}" class="dropdown-item">
