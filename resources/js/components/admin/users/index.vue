@@ -1,6 +1,6 @@
 <template>
     <div class="users">
-        <div class="row mb-2">
+        <div class="row mb-2" v-if="auth_type == 'admin'">
             <div class="col-md-3 align-self-end">
                 <a href="users/create" class="btn btn-outline-success btn-icon-text">
                     <i class="mdi mdi-account-plus"></i>

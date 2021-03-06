@@ -54025,7 +54025,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "users" }, [
-    _vm._m(0),
+    _vm.auth_type == "admin"
+      ? _c("div", { staticClass: "row mb-2" }, [_vm._m(0)])
+      : _vm._e(),
     _vm._v(" "),
     _c(
       "div",
@@ -54100,20 +54102,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mb-2" }, [
-      _c("div", { staticClass: "col-md-3 align-self-end" }, [
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-outline-success btn-icon-text",
-            attrs: { href: "users/create" }
-          },
-          [
-            _c("i", { staticClass: "mdi mdi-account-plus" }),
-            _vm._v("\n                Add User\n            ")
-          ]
-        )
-      ])
+    return _c("div", { staticClass: "col-md-3 align-self-end" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-outline-success btn-icon-text",
+          attrs: { href: "users/create" }
+        },
+        [
+          _c("i", { staticClass: "mdi mdi-account-plus" }),
+          _vm._v("\n                Add User\n            ")
+        ]
+      )
     ])
   }
 ]
