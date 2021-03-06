@@ -1,0 +1,340 @@
+.content{
+    margin-top: 1.5rem;
+}
+.profile_card .card_header {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.personal_info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.profile_card .personal_info .image {
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #aaa;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.profile_card .personal_info .image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.card-title {
+    float: left;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0 !important;
+}
+
+.profile_card .card_body {
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #fff;
+}
+
+.profile_card .card_body ul.profile_tabs {
+    padding: 0;
+    margin: 0;
+}
+
+.profile_card .card_body ul.profile_tabs li.tab_link a:not(last-of-type) {
+    border-bottom: 1px solid #ddd;
+}
+
+.profile_card .card_body ul.profile_tabs li.tab_link a {
+    padding: 10px;
+    display: block;
+    color: #696969;
+}
+
+.profile_card .card_body ul.profile_tabs li.tab_link a.active {
+    border-left: 4px solid;
+}
+
+.profile_image{
+    height: 150px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .profile_image img {
+      width: 100%;
+      height: 100%;
+  }
+  .profile_image.img img{
+      border-radius: 50%;
+  }
+  #image,
+  #cover{
+    display: none;
+  }
+
+  .label-img {
+      width: 100%;
+      height: 150px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      -webkit-transition: .3s all ease-in-out;
+      -moz-transition: .3s all ease-in-out;
+      -o-transition: .3s all ease-in-out;
+      transition: .3s all ease-in-out;
+  }
+
+  .profile_image.img .label-img{
+    width: 100%;
+    height: 150px;
+    position: relative;
+    overflow: visible !important;
+    border: 3px solid #aaa;
+    border-radius: 50%;
+    padding: 2px;
+  }
+
+  .profile_image.cover .label-img .before{
+    background-color: #545454ba;
+    border-radius: 0;
+    padding: 2px 8px;
+    width: 100%;
+    height: 50%;
+    color: #eee;
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    font-size: 13px;
+    cursor: pointer;
+    -webkit-transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+    transition: .3s all ease-in-out;
+  }
+
+  .profile_image.img .label-img .before{
+    background-color: #000;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 5px;
+  }
+
+  .profile_image.cover .label-img:hover .before{
+    bottom: 0;
+  }
+  .profile_image.cover .label-img i{
+    font-size: 30px;
+  }
+  .label-img img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .label-img .before svg {
+      margin-right: 5px;
+      fill: #fff;
+  }
+  select.form-control,
+  select.typeahead,
+  select.tt-query,
+  select.tt-hint{
+      color: #495057 !important;
+  }
+
+.edu_card {
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.edu_card .options{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+}
+
+.edu_card:hover .options{
+    display: block;
+
+}
+
+.edu_card:hover .options .edit:hover{
+    cursor: pointer;
+    color: rgb(33, 106, 216);
+}
+.edu_card:hover .options .delete:hover{
+    cursor: pointer;
+    color: rgb(184, 24, 24);
+}
+
+.edu_card .edu_title {
+    border-bottom: 1px solid #ddd;
+}
+
+.edu_card ul{
+    padding-top: 10px;
+}
+
+.edu_card ul p{
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+.card-body .title{
+    border-bottom: 1px solid #ddd;
+}
+
+.list-star li {
+    line-height: unset;
+    display: flex;
+    justify-content: end;
+    padding-left: 10px;
+    position: relative;
+}
+
+.list-star li:before {
+    margin: 0 10px 0 0;
+    width: fit-content;
+    height: fit-content;
+}
+
+.list-arrow li {
+    line-height: unset;
+    display: flex;
+    justify-content: end;
+    padding-left: 10px;
+    position: relative;
+}
+
+.list-arrow li:before {
+    margin: 0 10px 0 0;
+    width: fit-content;
+    height: fit-content;
+}
+
+.user{
+    display: flex;
+}
+
+.user .image{
+    width: 50px;
+    height: 50px;
+    border: 3px solid #ddd;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.user .image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.user .info{
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.user .info .name,
+.user .info .email{
+    margin: 0;
+}
+
+/*------- Cv Style -------*/
+
+.resume {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 10px;
+	padding: 5px 0;
+}
+
+.resume .file_img {
+	width: 50px;
+	height: 50px;
+}
+
+.resume .file_img img {
+	width: 100%;
+	height: 100%;
+}
+
+button.yallaupload,
+label[for=cv] {
+	position: relative;
+	width: 100%;
+	padding: 25px 0;
+	background: #dddddd45;
+	border: 2px dashed #ddd;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	cursor: pointer;
+}
+
+label[for=cv] .upload-progress {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #ffffff82;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+label[for=cv] .upload-progress .file_img {
+	width: 20%;
+	height: 70px;
+	margin-right: 5px;
+}
+
+label[for=cv] .upload-progress .file_img img {
+	width: 100%;
+	height: 100%;
+}
+
+label[for=cv] .upload-progress .info {
+	display: flex;
+	flex-flow: column;
+	width: 70%;
+}
+
+button.yallaupload:focus {
+	outline: none;
+}
+
+button.yallaupload i,
+label[for=cv] i {
+	color: #ddd;
+	font-size: 30px;
+	margin-bottom: 5px;
+}
+
+button.yallaupload span,
+label[for=cv] span {
+	color: #9c9c9c;
+	font-weight: bold;
+}
+
+input.file_upload {
+	display: none;
+}
+
+
