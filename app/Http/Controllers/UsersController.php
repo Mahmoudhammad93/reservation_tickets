@@ -20,7 +20,7 @@ class UsersController extends Controller
     }
 
     public function store(Request $request){
-        return $request;
+        // return $request;
         $user = new User;
         $user->first_name = $request['user']['first_name'];
         $user->last_name = $request['user']['last_name'];
