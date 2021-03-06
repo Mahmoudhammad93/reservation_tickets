@@ -85,10 +85,10 @@ export default {
                 });
             })
             .catch((err) => {
-                    Vue.$toast.error(err, {
-                        position: "bottom-right"
-                    });
+                Vue.$toast.error(err, {
+                    position: "bottom-right"
                 });
+            });
         }
     }
 }

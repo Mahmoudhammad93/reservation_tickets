@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ticket;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = Ticket::where('user_id',auth()->user()->id)
+        ->join('users','users.id','tickets.user_id')
+        ->select('users.first_name as f_name','users.last_name as l_name','tickets.name','tickets.deadline','tickets.id')
+        ->where('tickets.deadline','>=', date('Y-m-d'))
+        ->get();
+        return view('home',compact('data'));
     }
 }

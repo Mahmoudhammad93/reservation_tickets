@@ -32,6 +32,7 @@ import permissions from './components/admin/global/permissions/index.vue';
 import create_permission from './components/admin/global/permissions/create/index.vue';
 import tickets from './components/admin/tickets/index.vue';
 import create_ticket from './components/admin/tickets/create/index.vue';
+import dashboard from './components/admin/dashboard/index.vue';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -68,6 +69,7 @@ Vue.component('permissions', permissions);
 Vue.component('create_permission', create_permission);
 Vue.component('tickets', tickets);
 Vue.component('create_ticket', create_ticket);
+Vue.component('dashboard', dashboard);
 
 
 /**

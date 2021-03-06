@@ -11,13 +11,22 @@ class TicketsController extends Controller
 {
     //
     public function index(){
-        $data = Ticket::where('user_id',auth()->user()->id)
-        ->join('users','users.id','tickets.user_id')
-        ->select('users.first_name as f_name','users.last_name as l_name','tickets.name','tickets.deadline','tickets.id')
-        ->where('tickets.deadline','>=', date('Y-m-d'))
-        ->get();
-        // return date('Y-m-d');
-        $permissions = Permission::where('User_id',auth()->user()->id)->get();
+        if(auth()->user()->type == 'user'){
+            $data = Ticket::where('user_id',auth()->user()->id)
+            ->join('users','users.id','tickets.user_id')
+            ->select('users.first_name as f_name','users.last_name as l_name','tickets.name','tickets.deadline','tickets.id')
+            ->where('tickets.deadline','>=', date('Y-m-d'))
+            ->get();
+            // return date('Y-m-d');
+            $permissions = Permission::where('User_id',auth()->user()->id)->get();
+        }else{
+            $data = Ticket::join('users','users.id','tickets.user_id')
+            ->select('users.first_name as f_name','users.last_name as l_name','tickets.name','tickets.deadline','tickets.id')
+            ->where('tickets.deadline','>=', date('Y-m-d'))
+            ->get();
+            // return date('Y-m-d');
+            $permissions = Permission::where('User_id',auth()->user()->id)->get();
+        }
         return view('admin.tickets.index',compact('data','permissions'));
     }
 
