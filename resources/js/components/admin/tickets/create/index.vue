@@ -69,6 +69,11 @@ export default {
                     position: "bottom-right"
                 });
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         }
     }
 }

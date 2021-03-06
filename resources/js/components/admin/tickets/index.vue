@@ -77,12 +77,18 @@ export default {
     },
     methods:{
         delete_ticket(obj){
-            axios.post(`/admin/ticket/${obj.id}/delete/`).then((res) => {
+            axios.post(`/admin/ticket/${obj.id}/delete/`)
+            .then((res) => {
                 this.tickets.splice(this.tickets.indexOf(obj), 1)
                 Vue.$toast.success("Ticket deleted successfuly.", {
                     position: "bottom-right"
                 });
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         }
     }
 }

@@ -121,7 +121,8 @@ export default {
     },
     methods:{
         submitForm(permissions){
-            axios.post('/admin/users/store',{user: this.user, permissions: permissions}).then((res) => {
+            axios.post('/admin/users/store',{user: this.user, permissions: permissions})
+            .then((res) => {
                 console.log(res.data)
                 Vue.$toast.success('User created successfuly.', {
                     position: 'bottom-right',
@@ -134,6 +135,11 @@ export default {
                 this.user.type = null
                 this.user.password = null
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
 
         },
         handelType(e){

@@ -77,9 +77,15 @@ export default {
             this.show = value
         },
         user_data(){
-            axios.get(`/admin/user_data`).then((res) => {
+            axios.get(`/admin/user_data`)
+            .then((res) => {
                 this.user = res.data
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         newImg(data){
             this.user.image = data.image

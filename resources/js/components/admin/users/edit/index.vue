@@ -95,10 +95,10 @@
                                         :user_id="user.id"
                                     ></permissions>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <a :href="`/admin/permissions/${user.id}/add`">Add New Permission</a>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-right mb-2">
+                                    <a :href="`/admin/permissions/${user.id}/add`">Add New Permission</a>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success mr-2">
@@ -143,6 +143,11 @@ export default {
                 .then(res => {
                     console.log(res.data)
                     Vue.$toast.success("User created successfuly.", {
+                        position: "bottom-right"
+                    });
+                })
+                .catch((err) => {
+                    Vue.$toast.error(err, {
                         position: "bottom-right"
                     });
                 });

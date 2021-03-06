@@ -121,7 +121,8 @@ export default {
     methods:{
         add_master(obj){
             if (obj.name != null && obj.university != null && obj.from != null && obj.to != null){
-                axios.post(`/admin/add_master`,{name: obj.name, university: obj.university, from: obj.from, to: obj.to}).then((res) => {
+                axios.post(`/admin/add_master`,{name: obj.name, university: obj.university, from: obj.from, to: obj.to})
+                .then((res) => {
                     Vue.$toast.success('Master Added Successfully.', {})
                     this.masters.push(res.data)
                     this.masters.name = null;
@@ -129,43 +130,72 @@ export default {
                     this.masters.from = null;
                     this.masters.to = null;
                 })
+                .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
             }else{
                 Vue.$toast.error('Complete your info.', {})
             }
         },
         get_masters(){
-            axios.get(`/admin/get_masters`).then((res) => {
+            axios.get(`/admin/get_masters`)
+            .then((res) => {
                 this.masters = res.data
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         removeMaster(obj) {
-            axios.post(`/admin/delete_master/${obj.id}`).then((res)=>{
+            axios.post(`/admin/delete_master/${obj.id}`)
+            .then((res)=>{
                 this.masters.splice(this.masters.indexOf(obj), 1)
                 // console.log(res.data)
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         editMaster(obj) {
             this.show = false
             this.update = true
             this.obj_id = obj.id
-            axios.get(`/admin/get_master/${obj.id}`).then((res)=>{
+            axios.get(`/admin/get_master/${obj.id}`)
+            .then((res)=>{
                 this.masters.name = res.data.name
                 this.masters.university = res.data.university
                 this.masters.from = res.data.from
                 this.masters.to = res.data.to
                 this.show = true
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         updateMaster(obj_id, obj){
             const object = this.masters.find( ({ id }) => id === obj_id );
             if (obj.name != null && obj.university != null && obj.from != null && obj.to != null){
-                axios.post(`/admin/update_master/${object.id}`,{name: obj.name, university: obj.university, from: obj.from, to: obj.to}).then((res) => {
+                axios.post(`/admin/update_master/${object.id}`,{name: obj.name, university: obj.university, from: obj.from, to: obj.to})
+                .then((res) => {
                     Vue.$toast.success('master Updated Successfully.', {})
                     object.name = res.data.name
                     object.university = res.data.university
                     object.from = res.data.from
                     object.to = res.data.to
                 })
+                .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
             }else{
                 Vue.$toast.error('Complete your info.', {})
             }

@@ -44,12 +44,18 @@ export default {
     },
     methods:{
         addPermission(){
-            axios.post(`/admin/permissions/store`,{permission:this.permission, user_id:this.user_id}).then((res) => {
+            axios.post(`/admin/permissions/store`,{permission:this.permission, user_id:this.user_id})
+            .then((res) => {
                 console.log(res.data)
                 Vue.$toast.success("Permission created successfuly.", {
                     position: "bottom-right"
                 });
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         }
     }
 }

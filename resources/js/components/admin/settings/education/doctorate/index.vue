@@ -132,7 +132,8 @@ export default {
     methods:{
         add_doctorate(obj){
             if (obj.name != null && obj.university != null && obj.from != null && obj.to != null){
-                axios.post(`/admin/add_doctorate`,{name: obj.name, university: obj.university, description: obj.description, from: obj.from, to: obj.to}).then((res) => {
+                axios.post(`/admin/add_doctorate`,{name: obj.name, university: obj.university, description: obj.description, from: obj.from, to: obj.to})
+                .then((res) => {
                     Vue.$toast.success('doctorate Added Successfully.', {})
                     this.doctorates.push(res.data)
                     this.doctorates.name = null;
@@ -141,26 +142,44 @@ export default {
                     this.doctorates.from = null;
                     this.doctorates.to = null;
                 })
+                .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
             }else{
                 Vue.$toast.error('Complete your info.', {})
             }
         },
         get_doctorates(){
-            axios.get(`/admin/get_doctorates`).then((res) => {
+            axios.get(`/admin/get_doctorates`)
+            .then((res) => {
                 this.doctorates = res.data
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         removeDoctorate(obj) {
-            axios.post(`/admin/delete_doctorate/${obj.id}`).then((res)=>{
+            axios.post(`/admin/delete_doctorate/${obj.id}`)
+            .then((res)=>{
                 this.doctorates.splice(this.doctorates.indexOf(obj), 1)
                 // console.log(res.data)
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         editDoctorate(obj) {
             this.show = false
             this.update = true
             this.obj_id = obj.id
-            axios.get(`/admin/get_doctorate/${obj.id}`).then((res)=>{
+            axios.get(`/admin/get_doctorate/${obj.id}`)
+            .then((res)=>{
                 this.doctorates.name = res.data.name
                 this.doctorates.university = res.data.university
                 this.doctorates.description = res.data.description
@@ -168,11 +187,17 @@ export default {
                 this.doctorates.to = res.data.to
                 this.show = true
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         updateDoctorate(obj_id, obj){
             const object = this.doctorates.find( ({ id }) => id === obj_id );
             if (obj.name != null && obj.university != null && obj.from != null && obj.to != null){
-                axios.post(`/admin/update_doctorate/${object.id}`,{name: obj.name, university: obj.university, description: obj.description, from: obj.from, to: obj.to}).then((res) => {
+                axios.post(`/admin/update_doctorate/${object.id}`,{name: obj.name, university: obj.university, description: obj.description, from: obj.from, to: obj.to})
+                .then((res) => {
                     Vue.$toast.success('doctorate Updated Successfully.', {})
                     object.name = res.data.name
                     object.university = res.data.university
@@ -180,6 +205,11 @@ export default {
                     object.from = res.data.from
                     object.to = res.data.to
                 })
+                .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
             }else{
                 Vue.$toast.error('Complete your info.', {})
             }

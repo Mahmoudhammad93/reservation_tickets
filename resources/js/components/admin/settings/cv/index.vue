@@ -84,23 +84,35 @@ export default {
             this.progress = Math.ceil((event.loaded / event.total) * 100);
             this.$forceUpdate();
           },
-        }).then((res) => {
+        })
+        .then((res) => {
             this.fileReault = res.data
             this.file_extention = this.fileReault.file.split('.').pop()
             setTimeout(function(){
               this.selected = true
             },1000)
         })
+        .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
     },
     filesSrc(){
       return this.public_path + '/' + this.fileReault.file
     },
     get_resume(){
-      axios.get(`/admin/get_cv`).then((res) => {
+      axios.get(`/admin/get_cv`)
+      .then((res) => {
         this.resume = res.data
         console.log(res.data)
         this.resume_extention = res.data.file.split('.').pop()
       })
+      .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
     }
   },
 };

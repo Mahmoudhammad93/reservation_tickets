@@ -2175,6 +2175,10 @@ __webpack_require__.r(__webpack_exports__);
         setTimeout(function () {
           this.selected = true;
         }, 1000);
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     filesSrc: function filesSrc() {
@@ -2187,6 +2191,10 @@ __webpack_require__.r(__webpack_exports__);
         _this2.resume = res.data;
         console.log(res.data);
         _this2.resume_extention = res.data.file.split('.').pop();
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     }
   }
@@ -2283,6 +2291,10 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/admin/user_data").then(function (res) {
         _this.user = res.data;
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     newImg: function newImg(data) {
@@ -3114,6 +3126,10 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         console.log(res.data);
         Vue.$toast.success("Permission created successfuly.", {
+          position: "bottom-right"
+        });
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
           position: "bottom-right"
         });
       });
@@ -5285,6 +5301,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.doctorates.description = null;
           _this.doctorates.from = null;
           _this.doctorates.to = null;
+        })["catch"](function (err) {
+          Vue.$toast.error(err, {
+            position: "bottom-right"
+          });
         });
       } else {
         Vue.$toast.error('Complete your info.', {});
@@ -5295,6 +5315,10 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/admin/get_doctorates").then(function (res) {
         _this2.doctorates = res.data;
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     removeDoctorate: function removeDoctorate(obj) {
@@ -5303,6 +5327,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/admin/delete_doctorate/".concat(obj.id)).then(function (res) {
         _this3.doctorates.splice(_this3.doctorates.indexOf(obj), 1); // console.log(res.data)
 
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     editDoctorate: function editDoctorate(obj) {
@@ -5318,6 +5346,10 @@ __webpack_require__.r(__webpack_exports__);
         _this4.doctorates.from = res.data.from;
         _this4.doctorates.to = res.data.to;
         _this4.show = true;
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     updateDoctorate: function updateDoctorate(obj_id, obj) {
@@ -5340,6 +5372,10 @@ __webpack_require__.r(__webpack_exports__);
           object.description = res.data.description;
           object.from = res.data.from;
           object.to = res.data.to;
+        })["catch"](function (err) {
+          Vue.$toast.error(err, {
+            position: "bottom-right"
+          });
         });
       } else {
         Vue.$toast.error('Complete your info.', {});
@@ -5502,6 +5538,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.masters.university = null;
           _this.masters.from = null;
           _this.masters.to = null;
+        })["catch"](function (err) {
+          Vue.$toast.error(err, {
+            position: "bottom-right"
+          });
         });
       } else {
         Vue.$toast.error('Complete your info.', {});
@@ -5512,6 +5552,10 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/admin/get_masters").then(function (res) {
         _this2.masters = res.data;
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     removeMaster: function removeMaster(obj) {
@@ -5520,6 +5564,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/admin/delete_master/".concat(obj.id)).then(function (res) {
         _this3.masters.splice(_this3.masters.indexOf(obj), 1); // console.log(res.data)
 
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     editMaster: function editMaster(obj) {
@@ -5534,6 +5582,10 @@ __webpack_require__.r(__webpack_exports__);
         _this4.masters.from = res.data.from;
         _this4.masters.to = res.data.to;
         _this4.show = true;
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     updateMaster: function updateMaster(obj_id, obj) {
@@ -5554,6 +5606,10 @@ __webpack_require__.r(__webpack_exports__);
           object.university = res.data.university;
           object.from = res.data.from;
           object.to = res.data.to;
+        })["catch"](function (err) {
+          Vue.$toast.error(err, {
+            position: "bottom-right"
+          });
         });
       } else {
         Vue.$toast.error('Complete your info.', {});
@@ -5697,6 +5753,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.schools.name = null;
           _this.schools.from = null;
           _this.schools.to = null;
+        })["catch"](function (err) {
+          Vue.$toast.error(err, {
+            position: "bottom-right"
+          });
         });
       } else {
         Vue.$toast.error('Complete your info.', {});
@@ -5707,6 +5767,10 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/admin/get_schools").then(function (res) {
         _this2.schools = res.data;
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     removeSchool: function removeSchool(obj) {
@@ -5715,6 +5779,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/admin/delete_school/".concat(obj.id)).then(function (res) {
         _this3.schools.splice(_this3.schools.indexOf(obj), 1); // console.log(res.data)
 
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     editSchool: function editSchool(obj) {
@@ -5728,6 +5796,10 @@ __webpack_require__.r(__webpack_exports__);
         _this4.schools.from = res.data.from;
         _this4.schools.to = res.data.to;
         _this4.show = true;
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     updateSchool: function updateSchool(obj_id, obj) {
@@ -5746,6 +5818,10 @@ __webpack_require__.r(__webpack_exports__);
           object.name = res.data.name;
           object.from = res.data.from;
           object.to = res.data.to;
+        })["catch"](function (err) {
+          Vue.$toast.error(err, {
+            position: "bottom-right"
+          });
         });
       } else {
         Vue.$toast.error('Complete your info.', {});
@@ -6047,6 +6123,10 @@ __webpack_require__.r(__webpack_exports__);
         Vue.$toast.success("Ticket created successfuly.", {
           position: "bottom-right"
         });
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     }
   }
@@ -6147,6 +6227,10 @@ __webpack_require__.r(__webpack_exports__);
         _this.tickets.splice(_this.tickets.indexOf(obj), 1);
 
         Vue.$toast.success("Ticket deleted successfuly.", {
+          position: "bottom-right"
+        });
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
           position: "bottom-right"
         });
       });
@@ -6327,6 +6411,10 @@ __webpack_require__.r(__webpack_exports__);
         _this.user.address = null;
         _this.user.type = null;
         _this.user.password = null;
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
+          position: "bottom-right"
+        });
       });
     },
     handelType: function handelType(e) {
@@ -6509,6 +6597,10 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         console.log(res.data);
         Vue.$toast.success("User created successfuly.", {
+          position: "bottom-right"
+        });
+      })["catch"](function (err) {
+        Vue.$toast.error(err, {
           position: "bottom-right"
         });
       });
@@ -53860,41 +53952,35 @@ var render = function() {
                   ? _c(
                       "div",
                       { staticClass: "form-group" },
-                      [
-                        _vm._l(_vm.user.permissions, function(permission) {
-                          return _c(
-                            "div",
-                            { key: permission.id },
-                            [
-                              _c("permissions", {
-                                attrs: {
-                                  data: permission,
-                                  user_id: _vm.user.id
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-12" }, [
-                            _c(
-                              "a",
-                              {
-                                attrs: {
-                                  href:
-                                    "/admin/permissions/" + _vm.user.id + "/add"
-                                }
-                              },
-                              [_vm._v("Add New Permission")]
-                            )
-                          ])
-                        ])
-                      ],
-                      2
+                      _vm._l(_vm.user.permissions, function(permission) {
+                        return _c(
+                          "div",
+                          { key: permission.id },
+                          [
+                            _c("permissions", {
+                              attrs: { data: permission, user_id: _vm.user.id }
+                            })
+                          ],
+                          1
+                        )
+                      }),
+                      0
                     )
                   : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12 text-right mb-2" }, [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: "/admin/permissions/" + _vm.user.id + "/add"
+                        }
+                      },
+                      [_vm._v("Add New Permission")]
+                    )
+                  ])
+                ]),
                 _vm._v(" "),
                 _c(
                   "button",

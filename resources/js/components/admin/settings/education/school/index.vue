@@ -105,48 +105,78 @@ export default {
     methods:{
         add_school(obj){
             if (obj.name != null && obj.from != null && obj.to != null){
-                axios.post(`/admin/add_school`,{name: obj.name, from: obj.from, to: obj.to}).then((res) => {
+                axios.post(`/admin/add_school`,{name: obj.name, from: obj.from, to: obj.to})
+                .then((res) => {
                     Vue.$toast.success('School Added Successfully.', {})
                     this.schools.push(res.data)
                     this.schools.name = null;
                     this.schools.from = null;
                     this.schools.to = null;
                 })
+                .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
             }else{
                 Vue.$toast.error('Complete your info.', {})
             }
         },
         get_schools(){
-            axios.get(`/admin/get_schools`).then((res) => {
+            axios.get(`/admin/get_schools`)
+            .then((res) => {
                 this.schools = res.data
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         removeSchool(obj) {
-            axios.post(`/admin/delete_school/${obj.id}`).then((res)=>{
+            axios.post(`/admin/delete_school/${obj.id}`)
+            .then((res)=>{
                 this.schools.splice(this.schools.indexOf(obj), 1)
                 // console.log(res.data)
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         editSchool(obj) {
             this.show = false
             this.update = true
             this.obj_id = obj.id
-            axios.get(`/admin/get_school/${obj.id}`).then((res)=>{
+            axios.get(`/admin/get_school/${obj.id}`)
+            .then((res)=>{
                 this.schools.name = res.data.name
                 this.schools.from = res.data.from
                 this.schools.to = res.data.to
                 this.show = true
             })
+            .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
         },
         updateSchool(obj_id, obj){
             const object = this.schools.find( ({ id }) => id === obj_id );
             if (obj.name != null && obj.from != null && obj.to != null){
-                axios.post(`/admin/update_school/${object.id}`,{name: obj.name, from: obj.from, to: obj.to}).then((res) => {
+                axios.post(`/admin/update_school/${object.id}`,{name: obj.name, from: obj.from, to: obj.to})
+                .then((res) => {
                     Vue.$toast.success('School Updated Successfully.', {})
                     object.name = res.data.name
                     object.from = res.data.from
                     object.to = res.data.to
                 })
+                .catch((err) => {
+                    Vue.$toast.error(err, {
+                        position: "bottom-right"
+                    });
+                });
             }else{
                 Vue.$toast.error('Complete your info.', {})
             }
