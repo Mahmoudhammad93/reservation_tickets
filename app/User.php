@@ -56,7 +56,7 @@ class User extends Authenticatable
     }
 
     public function cv(){
-        return $this->hasMany('App\Resume');
+        return $this->hasOne('App\Resume', 'user_id');
     }
 
     public function skills(){

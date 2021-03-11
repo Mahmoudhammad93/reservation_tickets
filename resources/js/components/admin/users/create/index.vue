@@ -121,6 +121,12 @@ export default {
     },
     methods:{
         submitForm(permissions){
+            let token = document.head.querySelector('meta[name="csrf-token"]');
+            if (token) {
+                window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+            } else {
+                console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+            }
             axios.post('/admin/users/store',{user: this.user, permissions: permissions})
             .then((res) => {
                 console.log(res.data)

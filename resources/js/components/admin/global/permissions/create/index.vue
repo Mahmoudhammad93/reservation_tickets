@@ -4,22 +4,16 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Default form</h4>
+                        <h4 class="card-title">Create Permission</h4>
                         <p class="card-description">
                             Basic form layout
                         </p>
                         <form class="forms-sample" @submit.prevent="addPermission()">
                             <div class="form-group">
-                                <label for="first_name"
-                                    >Permission Name</label
-                                >
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="name"
-                                    placeholder="Permission Name"
-                                    v-model="permission.name"
-                                />
+                                <label for="user">Permission Name</label>
+                                <select class="form-control form-control-lg" id="user" v-model="permission.id">
+                                    <option v-for="category in JSON.parse(categories)" :key="category.id" :value="category.id">{{category.name}}</option>
+                                </select>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">
                                 Save
@@ -35,7 +29,8 @@
 <script>
 export default {
     props:[
-        'user_id'
+        'user_id',
+        'categories'
     ],
     data(){
         return{

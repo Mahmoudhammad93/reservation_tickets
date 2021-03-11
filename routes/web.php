@@ -101,4 +101,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::post('tickets/store','TicketsController@store');
     Route::get('ticket/{id}','TicketsController@view_ticket');
     Route::post('ticket/{id}/delete','TicketsController@delete_ticket');
+
+    // To get and set categories
+    Route::get('categories','CategoriesController@index');
+    Route::get('categories/create','CategoriesController@create');
+    Route::post('categories/store','CategoriesController@store');
 });

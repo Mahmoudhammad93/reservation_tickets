@@ -176,7 +176,7 @@
                         {{-- {{auth()->user()->first_name .' '. auth()->user()->last_name}} --}}
                         </span>
                         <span class="online-status"></span>
-                        <img src="{{asset('storage/file/')}}" alt="profile"/>
+                        <img src="{{asset('storage/file/'.auth()->user()->image)}}" alt="profile"/>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a href="{{route('profile')}}" class="dropdown-item">

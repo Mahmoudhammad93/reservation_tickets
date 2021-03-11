@@ -6,6 +6,7 @@
                 <input
                     type="hidden"
                     name="name"
+                    v-model="permission_id"
                 />
             </div>
             <div class="col-2">
@@ -71,7 +72,8 @@
 export default {
     props:[
         'data',
-        'user_id'
+        'user_id',
+        'permission_id'
     ],
     data(){
         return{

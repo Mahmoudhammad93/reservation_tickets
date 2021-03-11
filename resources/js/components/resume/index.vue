@@ -1,1902 +1,850 @@
 <template>
     <div class="resume">
-        <div class="mobile-nav">
-            <button class="btn-mobile mobile-nav-close">
-                <i class="rsicon rsicon-close"></i>
-            </button>
-            <div class="mobile-nav-inner">
-                <nav id="mobile-nav" class="nav">
-                    <ul class="clearfix">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#references">References</a></li>
-                        <li>
-                            <a href="category.html">Blog</a>
-                            <ul>
-                                <li>
-                                    <a href="single-image.html">Image Post</a>
-                                </li>
-                                <li>
-                                    <a href="single-slider.html">Slider Post</a>
-                                </li>
-                                <li>
-                                    <a href="single-video.html">Video Post</a>
-                                </li>
-                                <li>
-                                    <a href="single-audio.html">Audio Post</a>
-                                </li>
-                                <li>
-                                    <a href="single-vimeo.html">Vimeo Post</a>
-                                </li>
-                                <li>
-                                    <a href="single-youtube.html"
-                                        >Youtube Post</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="single-dailymotion.html"
-                                        >Dailymotion Post</a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="single.html">Without Media Post</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html"
-                                        >Typography Page</a
-                                    >
-                                </li>
-                                <li><a href="icons.html">Icons Page</a></li>
-                                <li><a href="404.html">404 Page</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#calendar">Calendar <span></span></a>
-                        </li>
-                        <li>
-                            <a href="#contact">Contact <span></span></a>
-                        </li>
-                    </ul>
-                </nav>
+        <header>
+          <div class="demo">
+              <div class="content">
+                 <div id="large-header" class="large-header">
+                    <canvas id="demo-canvas"></canvas>
+                    <div class="logo">
+                        <img :src="`${temp_src}/img/m-logo.png`" alt="Logo Image">
+                    </div>
+                    <h1 class="main-title"><span class="thin">Welcome</span></h1>
+                    <div id="text-header"></div>
+                 </div>
+                 <div class="v-card wow fadeInDown">
+                     <div class="card-img">
+                          <a :href="`${public_path}/${user.image}`" data-lightbox="roadstrip">
+                              <img :src="`${public_path}/${user.image}`" alt="V-Card Image">
+                         </a>
+                     </div>
+                     <div class="card-body">
+                         <div class="card-header">
+                             <h4 class="title">
+                                 Mahmoud Hammad
+                             </h4>
+                             <p class="desc">
+                                  Engineer and software developer
+                             </p>
+                         </div>
+                         <div class="card-content">
+                             <P class="desc">
+                                  {{user.cover_letter}}
+                             </P>
+                             <ul class="social list-unstyled">
+                                 <li>
+                                     <i class="fa fa-envelope"></i>
+                                     <p>{{user.email}}</p>
+                                 </li>
+                                 <li>
+                                     <i class="fa fa-map-marker"></i>
+                                     <p>{{user.address}}</p>
+                                 </li>
+                                 <li>
+                                     <i class="fa fa-mobile"></i>
+                                      <p>
+                                     0111 189 3717
+                                     -
+                                     0100 446 0433 <img class="whats" :src="`${temp_src}/img/whats.png`">
+                                     </p>
+                                 </li>
+                             </ul>
+                             <div class="cv wow fadeInDown">
+                              <h2>
+                                Download my Cv: 
+                                <a :href="`${public_path}/${cv}`" class="fa fa-file-pdf-o" download="Mahmoud Hammad-Cv" target="_blank"></a>
+                              </h2>
+                            </div>
+                         </div>
+                     </div>
+                 </div>
+              </div>
+           </div>
+        </header>
+        <!-- /end header -->
+    
+        <!-- Start Empty-->
+        <div class="empty"></div>
+        <!-- /end empty-->
+    
+        <!-- Start About Me-->
+        <section class="about-me">
+            <div class="header">
+                <h3 class="title">
+                    About Me
+                </h3>
             </div>
-        </div>
-        <div class="sidebar sidebar-fixed">
-            <button class="btn-sidebar btn-sidebar-close">
-                <i class="rsicon rsicon-close"></i>
-            </button>
-            <div class="widget-area">
-                <aside class="widget widget-profile">
-                    <div class="profile-photo">
-                        <img
-                            :src="`${tempSrc()}/img/uploads/rs-photo-v2.jpg`"
-                            :alt="`${user.first_name} ${user.last_name}`"
-                        />
-                    </div>
-                    <div class="profile-info">
-                        <h2 class="profile-title">{{user.first_name+' '+user.last_name}}</h2>
-                        <h3 class="profile-position">
-                            Developer and Startup entrepreneur
-                        </h3>
-                    </div>
-                </aside>
-                <aside class="widget widget_search">
-                    <h2 class="widget-title">Search</h2>
-                    <form class="search-form">
-                        <label class="ripple">
-                            <span class="screen-reader-text">Search for:</span>
-                            <input
-                                class="search-field"
-                                type="search"
-                                placeholder="Search"
-                            />
-                        </label>
-                        <input
-                            type="submit"
-                            class="search-submit"
-                            value="Search"
-                        />
-                    </form>
-                </aside>
-                <aside class="widget widget_contact">
-                    <h2 class="widget-title">Contact Me</h2>
-                    <form
-                        class="contactForm"
-                        action="https://rscard.px-lab.com/html/php/contact_form.php"
-                        method="post"
-                    >
-                        <div class="input-field">
-                            <input
-                                class="contact-name"
-                                type="text"
-                                name="name"
-                            />
-                            <span class="line"></span>
-                            <label>Name</label>
-                        </div>
-                        <div class="input-field">
-                            <input
-                                class="contact-email"
-                                type="email"
-                                name="email"
-                            />
-                            <span class="line"></span>
-                            <label>Email</label>
-                        </div>
-                        <div class="input-field">
-                            <input
-                                class="contact-subject"
-                                type="text"
-                                name="subject"
-                            />
-                            <span class="line"></span>
-                            <label>Subject</label>
-                        </div>
-                        <div class="input-field">
-                            <textarea
-                                class="contact-message"
-                                rows="4"
-                                name="message"
-                            ></textarea>
-                            <span class="line"></span>
-                            <label>Message</label>
-                        </div>
-                        <span class="btn-outer btn-primary-outer ripple">
-                            <input
-                                class="contact-submit btn btn-lg btn-primary"
-                                type="submit"
-                                value="Send"
-                            />
-                        </span>
-                        <div class="contact-response"></div>
-                    </form>
-                </aside>
-                <aside class="widget widget-popuplar-posts">
-                    <h2 class="widget-title">Popular posts</h2>
-                    <ul>
-                        <li>
-                            <div class="post-media">
-                                <a href="#"
-                                    ><img
-                                        :src="`${tempSrc()}/img/uploads/thumb-78x56-1.jpg`"
-                                        alt=""
-                                /></a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aboutMe-box">
+                            <div class="aboutMe-img">
+                                <div class="overlay-fixed"></div>
+                                <img :src="`${temp_src}/img/about-me.png`" alt="About Me Image">
                             </div>
-                            <h3 class="post-title">
-                                <a href="#"
-                                    >Standard Post Format With Featured Image</a
-                                >
-                            </h3>
-                            <div class="post-info">
-                                <a href="#"
-                                    ><i class="rsicon rsicon-comments"></i>56
-                                    comments</a
-                                >
-                            </div>
-                        </li>
-                        <li>
-                            <div class="post-media">
-                                <a href="#"
-                                    ><img
-                                        :src="`${tempSrc()}/img/uploads/thumb-78x56-2.jpg`"
-                                        alt=""
-                                /></a>
-                            </div>
-                            <h3 class="post-title">
-                                <a href="#"
-                                    >Standard Post Format With Featured Image</a
-                                >
-                            </h3>
-                            <div class="post-info">
-                                <a href="#"
-                                    ><i class="rsicon rsicon-comments"></i>56
-                                    comments</a
-                                >
-                            </div>
-                        </li>
-                        <li>
-                            <div class="post-media">
-                                <a href="#"
-                                    ><img
-                                        :src="`${tempSrc()}/img/uploads/thumb-78x56-3.jpg`"
-                                        alt=""
-                                /></a>
-                            </div>
-                            <h3 class="post-title">
-                                <a href="#"
-                                    >Standard Post Format With Featured Image</a
-                                >
-                            </h3>
-                            <div class="post-info">
-                                <a href="#"
-                                    ><i class="rsicon rsicon-comments"></i>56
-                                    comments</a
-                                >
-                            </div>
-                        </li>
-                    </ul>
-                </aside>
-                <aside class="widget widget_tag_cloud">
-                    <h2 class="widget-title">Tag Cloud</h2>
-                    <div class="tagcloud">
-                        <a href="#" title="1 topic">Business</a>
-                        <a href="#" title="9 topics">City</a>
-                        <a href="#" title="10 topics">Creative</a>
-                        <a href="#" title="6 topics">Fashion</a>
-                        <a href="#" title="2 topics">Music</a>
-                        <a href="#" title="5 topics">News</a>
-                        <a href="#" title="9 topics">Peoples</a>
-                    </div>
-                </aside>
-                <aside class="widget widget-recent-posts">
-                    <h2 class="widget-title">Recent posts</h2>
-                    <ul>
-                        <li>
-                            <div class="post-tag">
-                                <a href="#">#Photo</a>
-                                <a href="#">#Architect</a>
-                            </div>
-                            <h3 class="post-title">
-                                <a href="#"
-                                    >Standard Post Format With Featured Image</a
-                                >
-                            </h3>
-                            <div class="post-info">
-                                <a href="#"
-                                    ><i class="rsicon rsicon-comments"></i>56
-                                    comments</a
-                                >
-                            </div>
-                        </li>
-                        <li>
-                            <div class="post-tag">
-                                <a href="#">#Photo</a>
-                                <a href="#">#Architect</a>
-                            </div>
-                            <h3 class="post-title">
-                                <a href="#"
-                                    >Standard Post Format With Featured Image</a
-                                >
-                            </h3>
-                            <div class="post-info">
-                                <a href="#"
-                                    ><i class="rsicon rsicon-comments"></i>56
-                                    comments</a
-                                >
-                            </div>
-                        </li>
-                        <li>
-                            <div class="post-tag">
-                                <a href="#">#Photo</a>
-                                <a href="#">#Architect</a>
-                            </div>
-                            <h3 class="post-title">
-                                <a href="#"
-                                    >Standard Post Format With Featured Image</a
-                                >
-                            </h3>
-                            <div class="post-info">
-                                <a href="#"
-                                    ><i class="rsicon rsicon-comments"></i>56
-                                    comments</a
-                                >
-                            </div>
-                        </li>
-                    </ul>
-                </aside>
-                <aside class="widget widget_categories">
-                    <h2 class="widget-title">Categories</h2>
-                    <ul>
-                        <li>
-                            <a href="#" title="Architecture Category Posts"
-                                >Architecture</a
-                            >
-                            (9)
-                        </li>
-                        <li>
-                            <a href="#" title="Business Category Posts"
-                                >Business</a
-                            >
-                            (16)
-                        </li>
-                        <li>
-                            <a href="#" title="Creative Category Posts"
-                                >Creative</a
-                            >
-                            (18)
-                        </li>
-                        <li>
-                            <a href="#" title="Design Category Posts">Design</a>
-                            (10)
-                        </li>
-                        <li>
-                            <a href="#" title="Development Category Posts"
-                                >Development</a
-                            >
-                            (14)
-                        </li>
-                        <li>
-                            <a href="#" title="Education Category Posts"
-                                >Education</a
-                            >
-                            (9)
-                        </li>
-                    </ul>
-                </aside>
-            </div>
-        </div>
-        <div class="wrapper">
-            <header class="header">
-                <div
-                    class="head-bg"
-                    :style="{ backgroundImage: `url(${public_path}/${user.image_cover})` }"
-                ></div>
-                <div class="head-bar">
-                    <div class="head-bar-inner">
-                        <div class="row">
-                            <div class="col-sm-3 col-xs-6">
-                                <a class="logo" href="index-2.html"
-                                    ><span>RS</span>card</a
-                                >
-                            </div>
-                            <div class="col-sm-9 col-xs-6">
-                                <div class="nav-wrap">
-                                    <nav id="nav" class="nav">
-                                        <ul class="clearfix">
-                                            <li><a href="#about">About</a></li>
-                                            <li>
-                                                <a href="#skills">Skills</a>
-                                            </li>
-                                            <li>
-                                                <a href="#portfolio"
-                                                    >Portfolio</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a href="#experience"
-                                                    >Experience</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a href="#references"
-                                                    >References</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a href="category.html">Blog</a>
-                                                <ul>
-                                                    <li>
-                                                        <a
-                                                            href="single-image.html"
-                                                            >Image Post</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="single-slider.html"
-                                                            >Slider Post</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="single-video.html"
-                                                            >Video Post</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="single-audio.html"
-                                                            >Audio Post</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="single-vimeo.html"
-                                                            >Vimeo Post</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="single-youtube.html"
-                                                            >Youtube Post</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="single-dailymotion.html"
-                                                            >Dailymotion Post</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a href="single.html"
-                                                            >Without Media
-                                                            Post</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="typography.html"
-                                                            >Typography Page</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a href="icons.html"
-                                                            >Icons Page</a
-                                                        >
-                                                    </li>
-                                                    <li>
-                                                        <a href="404.html"
-                                                            >404 Page</a
-                                                        >
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#calendar"
-                                                    >Calendar <span></span
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a href="#contact"
-                                                    >Contact <span></span
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                    <button class="btn-mobile btn-mobile-nav">
-                                        Menu
-                                    </button>
-                                    <button
-                                        class="btn-sidebar btn-sidebar-open"
-                                    >
-                                        <i class="rsicon rsicon-menu"></i>
-                                    </button>
-                                </div>
+                            <div class="desc">
+                                <p class="p1">
+                                    Hello! My name is Mahmoud Hamde Hammad and I'm Web Developer. I have experience in developing a real-time web applications, complex front-end and back-end management systems, social platform applications. All my projects based on and PHP5 in conjunction with other modern web technologies. PHP (native PHP, Laravel), MySQL, jQuery, SASS, HTML5, CSS3, Basic Knowledge in( Angular.js/React.js )are used. While developing an application I always keep in mind SEO optimization and social integration. Furthermore, I'm trying to make my code as clean as possible. In addition, I can convert designs to high quality, cross-browser compatible HTML5/CSS3 markup
+                                </p>
+                                <p class="p2"> 
+                                    I seeking for a Good long term career opportunity in a respectful company that will enhance and develop my future career. Developing clear, effective and accurate documents for tailored software packages. I have 2 years experience in front end and 8 months in backend and ability to learn new skills Interesting in being Great Programmer in Web. Hope to make apps to help people to make their life easie . now I’m learning Ionic .
+                                </p>
+                                <a href="#" class="more-text text-right">Read More <i class="fa fa-arrow-right"></i></a>
+                                <a href="#" class="back text-right"><i class="fa fa-arrow-left"></i> Back</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </header>
-            <div class="content">
+            </div>
+        </section>
+        <!-- /end about me-->
+    
+        <!-- Start My Skills -->
+        <section class="my-skills">
+            <div class="header">
+                <h3 class="title">
+                    My Skills
+                </h3>
+            </div>
+            <div class="container">
+                <div class="row">
+                <div class="col-md-4" v-for="skill in user.skills" :key="skill.id">
+                        <div class="box text-center wow fadeInDown php" :style="`border-bottom:4px solid ${skill.color}`">
+                            <div class="box-img">
+                                <img :src="`${public_path+'/'+skill.image}`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    {{skill.name}}
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">{{skill.percent}}%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" :style="`width: ${skill.percent}%`" :data-width="skill.percent"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown oop">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/oop.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    OOP
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">70%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="70"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown laravel">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/laravel.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    LARAVEL(MVC)
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">85%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown mysql">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/mysql.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    MYSQL
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">77%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="77"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown postger">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/postgresql.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    POSTGRESQL
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">70%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="70"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown git">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/git.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    GIT VERSION CONTROL
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">70%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="70"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown html">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/html.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    HTML & HTML5
+                                </h4>
+                            </div>
+                            <!-- Progress Box -->
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">100%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="100"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown css">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/css3.jpg`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    CSS & CSS3
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">95%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="95"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown bootstrap">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/bootstrap.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    BOOTSTRAP & BOOTSTRAP4
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">93%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="93"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown materialize">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/materialize.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    MATERIALIZE
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">93%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="93"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown sass">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/sass.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    SASS
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">77%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="77"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown javascript">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/javascript.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    JAVASCRIPT
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">90%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown jquery">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/jquery.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    JQUERY
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">90%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown gulp">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/gulp.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    GULP
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">80%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="80"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown gulp">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/pug.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    PUG
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">80%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="80"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown react">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/react.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    REACT.JS
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">60%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="60"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown vue">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/vue.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    VUE.JS
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">85%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown angular">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/angular.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    ANGULAR & ANGULAR4
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">60%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="50"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown ajax">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/ajax.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    AJAX
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">80%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="80"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown es6">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/es6.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    ECMASCRIPT6 "ES6"
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">70%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="70"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box text-center wow fadeInDown photoshop">
+                            <div class="box-img">
+                                <img :src="`${temp_src}/img/skills/photoshop.png`" alt="HTML Icon">
+                            </div>
+                            <div class="box-header">
+                                <h4 class="title">
+                                    PHOTOSHOP
+                                </h4>
+                            </div>
+                            <div class="progress-box wow fadeInDown">
+                                <h5><span class="color-heading pull-right">50%</span></h5>
+                                <div class="progress">
+                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="50"></div>
+                                </div>
+                            </div>
+                            <div class="box-desc">
+                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /end my skills -->
+    
+        <!-- Start Portfolio -->
+        <section class="portfolio popup-gallery">
+            <div class="header">
+                <h3 class="title">
+                    Portfolio
+                </h3>
+            </div>
+            <div class="container">
+                <div class="col-lg-12 lay">
+                    <div class="col-lg-4">
+                        <div class="img wow fadeInDown">
+                            <div class="overlay">
+                                <a href="img/work/slider-1.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
+                                <a href="http://novochem.net" class="fa fa-link" target="_blank"></a>
+                                </div>
+                                <img :src="`${temp_src}/img/work/slider-1.png`">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="img wow fadeInDown" data-wow-delay="0.3s">
+                                <div class="overlay">
+                                <a href="img/work/slider-7.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
+                                <a href="http://oes.inspire.eg/" class="fa fa-link" target="_blank"></a>
+                                </div>
+                                <img :src="`${temp_src}/img/work/slider-7.png`">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="img wow fadeInDown" data-wow-delay="0.6s">
+                                <div class="overlay">
+                                <a href="img/work/slider-3.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
+                                <a href="https://banan.academy/" class="fa fa-link" target="_blank"></a>
+                                </div>
+                                <img :src="`${temp_src}/img/work/slider-3.png`">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="img wow fadeInDown">
+                                <div class="overlay">
+                                <a href="img/work/slider-4.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
+                                <a href="http://novochem.net" class="fa fa-link" target="_blank"></a>
+                                </div>
+                                <img :src="`${temp_src}/img/work/slider-4.png`">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="img wow fadeInDown" data-wow-delay="0.3s">
+                                <div class="overlay">
+                                <a href="img/work/slider-9.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
+                                <a href="http://lcetschool.com/" class="fa fa-link" target="_blank"></a>
+                                </div>
+                                <img :src="`${temp_src}/img/work/slider-9.png`">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="img wow fadeInDown" data-wow-delay="0.6s">
+                                <div class="overlay">
+                                <a href="img/work/slider-6.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
+                                <a href="http://staging.fastkood.com/" class="fa fa-link" target="_blank"></a>
+                                </div>
+                                <img :src="`${temp_src}/img/work/slider-6.png`">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+        </section>
+        <!-- /end portfolio -->
+    
+        <!-- Start Footer -->
+        <footer class="footer">
+            <section class="contact-me">
+                <div class="header">
+                    <h4 class="title">
+                        Contact Me
+                    </h4>
+                </div>
                 <div class="container">
-                    <section id="about" class="section section-about">
-                        <div class="animate-up">
-                            <div class="section-box">
-                                <div class="profile">
-                                    <div class="row">
-                                        <div class="col-xs-5">
-                                            <div class="profile-photo">
-                                                <img
-                                                    :src="`${public_path}/${user.image}`"
-                                                    :alt="`${user.first_name} ${user.last_name}`"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-7">
-                                            <div class="profile-info">
-                                                <div class="profile-preword">
-                                                    <span>Hello</span>
-                                                </div>
-                                                <h1 class="profile-title">
-                                                    <span>I'm</span> {{user.first_name+' '+user.last_name}}
-                                                </h1>
-                                                <h2 class="profile-position">
-                                                    Developer and businessman
-                                                </h2>
-                                            </div>
-                                            <ul class="profile-list">
-                                                <li class="clearfix">
-                                                    <strong class="title"
-                                                        >Age</strong
-                                                    >
-                                                    <span class="cont">{{user.age}}</span>
-                                                </li>
-                                                <li class="clearfix">
-                                                    <strong class="title"
-                                                        >Address</strong
-                                                    >
-                                                    <span class="cont"
-                                                        >{{user.address}}</span
-                                                    >
-                                                </li>
-                                                <li class="clearfix">
-                                                    <strong class="title"
-                                                        >E-mail</strong
-                                                    >
-                                                    <span class="cont"
-                                                        ><a
-                                                            href="https://rscard.px-lab.com/cdn-cgi/l/email-protection#04766b6661767077696d706c44676b6974656a7d2a676b69"
-                                                            ><span
-                                                                class="__cf_email__"
-                                                                data-cfemail="26544944435452554b4f524e6645494b5647485f0845494b"
-                                                                >{{user.email}}</span
-                                                            ></a
-                                                        ></span
-                                                    >
-                                                </li>
-                                                <li class="clearfix">
-                                                    <strong class="title"
-                                                        >Phone</strong
-                                                    >
-                                                    <span class="cont"
-                                                        ><a
-                                                            :href="`tel:${user.phone}`"
-                                                            >{{user.phone}}</a
-                                                        ></span
-                                                    >
-                                                </li>
-                                                <li class="clearfix">
-                                                    <strong class="title"
-                                                        >Freelance</strong
-                                                    >
-                                                    <span class="cont"
-                                                        >till April 15,
-                                                        2016</span
-                                                    >
-                                                </li>
-                                                <li class="clearfix">
-                                                    <strong class="title"
-                                                        ><span class="button"
-                                                            >On Vacation</span
-                                                        ></strong
-                                                    >
-                                                    <span class="cont"
-                                                        ><i
-                                                            class="rsicon rsicon-calendar"
-                                                        ></i
-                                                        >till March 25,
-                                                        2016</span
-                                                    >
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="profile-social">
-                                    <ul class="social">
-                                        <li>
-                                            <a
-                                                class="ripple-centered"
-                                                href="https://www.facebook.com/"
-                                                target="_blank"
-                                                ><i
-                                                    class="rsicon rsicon-facebook"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                class="ripple-centered"
-                                                href="https://twitter.com/"
-                                                target="_blank"
-                                                ><i
-                                                    class="rsicon rsicon-twitter"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                class="ripple-centered"
-                                                href="https://www.linkedin.com/"
-                                                target="_blank"
-                                                ><i
-                                                    class="rsicon rsicon-linkedin"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                class="ripple-centered"
-                                                href="https://plus.google.com/"
-                                                target="_blank"
-                                                ><i
-                                                    class="rsicon rsicon-google-plus"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                class="ripple-centered"
-                                                href="https://dribbble.com/"
-                                                target="_blank"
-                                                ><i
-                                                    class="rsicon rsicon-dribbble"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                class="ripple-centered"
-                                                href="https://www.instagram.com/"
-                                                target="_blank"
-                                                ><i
-                                                    class="rsicon rsicon-instagram"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="section-txt-btn">
-                                <p>
-                                    <a
-                                        class="btn btn-lg btn-border ripple"
-                                        target="_blank"
-                                        :href="`${public_path}/${user.cv[0].file}`"
-                                        >Download Resume</a
-                                    >
-                                </p>
-                                <p>
-                                    Hello! I’m {{user.first_name+' '+user.last_name}}. Senior Web
-                                    Developer specializing in front end
-                                    development. Experienced with all stages of
-                                    the development cycle for dynamic web
-                                    projects. Well-versed in numerous
-                                    programming languages including JavaScript,
-                                    SQL, and C. Stng background in project
-                                    management and customer relations.
-                                </p>
-                            </div>
+                <div class="info">
+                    <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="logo  wow fadeInLeft" >
+                        <a href="#">
+                            <img :src="`${temp_src}/img/m-logo.png`" class="img-responsive" data-value="head">
+                        </a>
                         </div>
-                    </section>
-                    <section id="skills" class="section section-skills">
-                        <div class="animate-up">
-                            <h2 class="section-title">Professional Skills</h2>
-                            <div class="section-box">
-                                <div class="row">
-                                    <div class="col-sm-6" style="margin-bottom: 40px !important;" v-for="skill in user.skills" :key="skill.id">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title"
-                                                    >{{skill.name}}</span
-                                                >
-                                                <span class="bar-value"
-                                                    >{{skill.percent}}%</span
-                                                >
-                                            </div>
-                                            <div class="bar-line">
-                                                <span
-                                                    class="bar-fill"
-                                                    :data-width="`${skill.percent}%`"
-                                                ></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="describe  wow fadeInDown" >
+                        <p>
+                            I seeking for a Good long term career opportunity in a respectful company that will enhance and develop my future career. Developing clear, effective and accurate documents for tailored software packages. I have 2 years experience in front end and 8 months in backend and ability to learn new skills Interesting in being Great Programmer in Web. Hope to make apps to help people to make their life easie " now i learning ionic "
+                            <div class="signature pull-right">
+                            <h5>
+                                signature :- 
+                            </h5>
+                            <span>
+                                Mahmoud Hammad
+                            </span>
                             </div>
+                        </p>
                         </div>
-                    </section>
-                    <section id="portfolio" class="section section-portfolio">
-                        <div class="animate-up">
-                            <h2 class="section-title">Portfolio</h2>
-                            <div class="filter">
-                                <div class="filter-inner">
-                                    <div class="filter-btn-group">
-                                        <button data-filter="*">All</button>
-                                        <button data-filter=".photography">
-                                            Photography
-                                        </button>
-                                        <button data-filter=".nature">
-                                            Nature
-                                        </button>
-                                    </div>
-                                    <div class="filter-bar">
-                                        <span class="filter-bar-line"></span>
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="clearfix"></div>
+                        <div class="row">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <div class="contact-head">
                             </div>
-                            <div class="grid">
-                                <div class="grid-sizer"></div>
-                                <div class="grid-item size22 photography">
-                                    <div class="grid-box">
-                                        <figure class="portfolio-figure">
-                                            <img
-                                                :src="`${tempSrc()}/img/uploads/portfolio/portfolio-thumb-05-610x600.jpg`"
-                                                alt=""
-                                            />
-                                            <figcaption
-                                                class="portfolio-caption"
-                                            >
-                                                <div
-                                                    class="portfolio-caption-inner"
-                                                >
-                                                    <h3 class="portfolio-title">
-                                                        Street Photography
-                                                    </h3>
-                                                    <h4 class="portfolio-cat">
-                                                        Photography
-                                                    </h4>
-                                                    <div class="btn-group">
-                                                        <a
-                                                            class="btn-link"
-                                                            href="https://bit.ly/1YtB8he"
-                                                            target="_blank"
-                                                            ><i
-                                                                class="rsicon rsicon-link"
-                                                            ></i
-                                                        ></a>
-                                                        <a
-                                                            class="portfolioFancybox btn-zoom"
-                                                            data-fancybox-group="portfolioFancybox1"
-                                                            href="#portfolio1-inline1"
-                                                            ><i
-                                                                class="rsicon rsicon-eye"
-                                                            ></i
-                                                        ></a>
-                                                        <a
-                                                            class="portfolioFancybox hidden"
-                                                            data-fancybox-group="portfolioFancybox1"
-                                                            href="#portfolio1-inline2"
-                                                        ></a>
-                                                        <a
-                                                            class="portfolioFancybox hidden"
-                                                            data-fancybox-group="portfolioFancybox1"
-                                                            href="#portfolio1-inline3"
-                                                        ></a>
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-
-                                        <div
-                                            id="portfolio1-inline1"
-                                            class="fancybox-inline-box"
-                                        >
-                                            <div
-                                                class="inline-embed"
-                                                data-embed-type="image"
-                                                :data-embed-url="`${tempSrc()}/img/uploads/portfolio/portfolio-thumb-05-large.jpg`"
-                                            ></div>
-                                            <div class="inline-cont">
-                                                <h2 class="inline-title">
-                                                    Street photography is
-                                                    photography that features
-                                                    the chance encounters and
-                                                    random accidents within
-                                                    public places.
-                                                </h2>
-                                                <div class="inline-text">
-                                                    <p>
-                                                        Street photography does
-                                                        not necessitate the
-                                                        presence of a street or
-                                                        even the urban
-                                                        environment. Though
-                                                        people usually feature
-                                                        directly, street
-                                                        photography might be
-                                                        absent of people and can
-                                                        be an object or
-                                                        environment where the
-                                                        image projects a
-                                                        decidedly human
-                                                        character in facsimile
-                                                        or aesthetic.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div
-                                            id="portfolio1-inline2"
-                                            class="fancybox-inline-box"
-                                        >
-                                            <div
-                                                class="inline-embed"
-                                                data-embed-type="image"
-                                                :data-embed-url="`${tempSrc()}/img/uploads/portfolio/portfolio-thumb-01-large.jpg`"
-                                            ></div>
-                                            <div class="inline-cont">
-                                                <div class="inline-text">
-                                                    <h2 class="inline-title">
-                                                        Framing and timing
-                                                    </h2>
-                                                    <p>
-                                                        Framing and timing can
-                                                        be key aspects of the
-                                                        craft with the aim of
-                                                        some street photography
-                                                        being to create images
-                                                        at a decisive or
-                                                        poignant moment. Street
-                                                        photography can focus on
-                                                        emotions displayed,
-                                                        thereby also recording
-                                                        people's history from an
-                                                        emotional point of view.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div
-                                            id="portfolio1-inline3"
-                                            class="fancybox-inline-box"
-                                        >
-                                            <div
-                                                class="inline-embed"
-                                                data-embed-type="iframe"
-                                                :data-embed-url="`https://player.vimeo.com/video/118244244`"
-                                            ></div>
-                                            <div class="inline-cont">
-                                                <div class="inline-text">
-                                                    <h2 class="inline-title">
-                                                        A Look Into Documenting
-                                                        Street Fashion
-                                                        Photography
-                                                    </h2>
-                                                    <p>
-                                                        HB Nam is an
-                                                        internationally known
-                                                        street fashion
-                                                        photographer. In this
-                                                        Leica Camera Portrait,
-                                                        Nam explains how he
-                                                        started in photography
-                                                        and what photography
-                                                        means to him. For Nam,
-                                                        it's about documenting
-                                                        what's around him and
-                                                        the concentration
-                                                        required to achieve a
-                                                        good shot.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="grid-item size11 bridge">
-                                    <div class="grid-box">
-                                        <figure class="portfolio-figure">
-                                            <img
-                                                :src="`${tempSrc()}/img/uploads/portfolio/portfolio-thumb-11-289x281.jpg`"
-                                                alt=""
-                                            />
-                                            <figcaption
-                                                class="portfolio-caption"
-                                            >
-                                                <div
-                                                    class="portfolio-caption-inner"
-                                                >
-                                                    <h3 class="portfolio-title">
-                                                        Suspension Bridge
-                                                    </h3>
-                                                    <h4 class="portfolio-cat">
-                                                        Bridge
-                                                    </h4>
-                                                    <div class="btn-group">
-                                                        <a
-                                                            class="btn-link"
-                                                            href="https://bit.ly/1YtB8he"
-                                                            target="_blank"
-                                                            ><i
-                                                                class="rsicon rsicon-link"
-                                                            ></i
-                                                        ></a>
-                                                        <a
-                                                            class="portfolioFancybox btn-zoom"
-                                                            data-fancybox-group="portfolioFancybox2"
-                                                            href="#portfolio2-inline1"
-                                                            ><i
-                                                                class="rsicon rsicon-eye"
-                                                            ></i
-                                                        ></a>
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-
-                                        <div
-                                            id="portfolio2-inline1"
-                                            class="fancybox-inline-box"
-                                        >
-                                            <div class="inline-cont">
-                                                <h2 class="inline-title">
-                                                    Suspension Bridges - Design
-                                                    Technology
-                                                </h2>
-                                                <div class="inline-text">
-                                                    <p>
-                                                        Suspension bridges in
-                                                        their simplest form were
-                                                        originally made from
-                                                        rope and wood. Modern
-                                                        suspension bridges use a
-                                                        box section roadway
-                                                        supported by high
-                                                        tensile strength cables.
-                                                        In the early nineteenth
-                                                        century, suspension
-                                                        bridges used iron chains
-                                                        for cables. The high
-                                                        tensile cables used in
-                                                        most modern suspension
-                                                        bridges were introduced
-                                                        in the late nineteenth
-                                                        century.<br />
-                                                        Today, the cables are
-                                                        made of thousands of
-                                                        individual steel wires
-                                                        bound tightly together.
-                                                        Steel, which is very
-                                                        strong under tension, is
-                                                        an ideal material for
-                                                        cables; a single steel
-                                                        wire, only 0.1 inch
-                                                        thick, can support over
-                                                        half a ton without
-                                                        breaking.
-                                                    </p>
-                                                    <p>
-                                                        Light, and strong,
-                                                        suspension bridges can
-                                                        span distances from
-                                                        2,000 to 7,000 feet far
-                                                        longer than any other
-                                                        kind of bridge. They are
-                                                        ideal for covering busy
-                                                        waterways.
-                                                    </p>
-                                                    <p>
-                                                        With any bridge project
-                                                        the choice of materials
-                                                        and form usually comes
-                                                        down to cost. Suspension
-                                                        bridges tend to be the
-                                                        most expensive to build.
-                                                        A suspension bridge
-                                                        suspends the roadway
-                                                        from huge main cables,
-                                                        which extend from one
-                                                        end of the bridge to the
-                                                        other. These cables rest
-                                                        on top of high towers
-                                                        and have to be securely
-                                                        anchored into the bank
-                                                        at either end of the
-                                                        bridge. The towers
-                                                        enable the main cables
-                                                        to be draped over long
-                                                        distances. Most of the
-                                                        weight or load of the
-                                                        bridge is transferred by
-                                                        the cables to the
-                                                        anchorage systems. These
-                                                        are imbedded in either
-                                                        solid rock or huge
-                                                        concrete blocks. Inside
-                                                        the anchorages, the
-                                                        cables are spread over a
-                                                        large area to evenly
-                                                        distribute the load and
-                                                        to prevent the cables
-                                                        from breaking free.
-                                                    </p>
-                                                    <p>
-                                                        The Arthashastra of
-                                                        Kautilya mentions the
-                                                        construction of dams and
-                                                        bridges.A Mauryan bridge
-                                                        near Girnar was surveyed
-                                                        by James Princep. The
-                                                        bridge was swept away
-                                                        during a flood, and
-                                                        later repaired by
-                                                        Puspagupta, the chief
-                                                        architect of emperor
-                                                        Chandragupta I. The
-                                                        bridge also fell under
-                                                        the care of the Yavana
-                                                        Tushaspa, and the Satrap
-                                                        Rudra Daman. The use of
-                                                        stronger bridges using
-                                                        plaited bamboo and iron
-                                                        chain was visible in
-                                                        India by about the 4th
-                                                        century. A number of
-                                                        bridges, both for
-                                                        military and commercial
-                                                        purposes, were
-                                                        constructed by the
-                                                        Mughal administration in
-                                                        India.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="grid-item size11 nature photography"
-                                >
-                                    <div class="grid-box">
-                                        <figure class="portfolio-figure">
-                                            <img
-                                                :src="`${tempSrc()}/img/uploads/portfolio/portfolio-thumb-08-289x281.jpg`"
-                                                alt=""
-                                            />
-                                            <figcaption
-                                                class="portfolio-caption"
-                                            >
-                                                <div
-                                                    class="portfolio-caption-inner"
-                                                >
-                                                    <h3 class="portfolio-title">
-                                                        Rocky Mountains
-                                                    </h3>
-                                                    <h4 class="portfolio-cat">
-                                                        Nature, Photography
-                                                    </h4>
-                                                    <div class="btn-group">
-                                                        <a
-                                                            class="btn-link"
-                                                            href="https://bit.ly/1YtB8he"
-                                                            target="_blank"
-                                                            ><i
-                                                                class="rsicon rsicon-link"
-                                                            ></i
-                                                        ></a>
-                                                        <a
-                                                            class="portfolioFancybox btn-zoom"
-                                                            data-fancybox-group="portfolioFancybox3"
-                                                            href="#portfolio3-inline1"
-                                                            ><i
-                                                                class="rsicon rsicon-eye"
-                                                            ></i
-                                                        ></a>
-                                                        <a
-                                                            class="portfolioFancybox hidden"
-                                                            data-fancybox-group="portfolioFancybox3"
-                                                            href="#portfolio3-inline2"
-                                                        ></a>
-                                                        <a
-                                                            class="portfolioFancybox hidden"
-                                                            data-fancybox-group="portfolioFancybox3"
-                                                            href="#portfolio3-inline3"
-                                                        ></a>
-                                                    </div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-
-                                        <div
-                                            id="portfolio3-inline1"
-                                            class="fancybox-inline-box"
-                                        >
-                                            <div
-                                                class="inline-embed"
-                                                data-embed-type="image"
-                                                :data-embed-url="`${tempSrc()}/img/uploads/portfolio/portfolio-thumb-08-large.jpg`"
-                                            ></div>
-                                        </div>
-                                        <div
-                                            id="portfolio3-inline2"
-                                            class="fancybox-inline-box"
-                                        >
-                                            <div
-                                                class="inline-embed"
-                                                data-embed-type="image"
-                                                :data-embed-url="`${tempSrc()}/img/uploads/portfolio/portfolio-thumb-04-large.jpg`"
-                                            ></div>
-                                        </div>
-                                        <div
-                                            id="portfolio3-inline3"
-                                            class="fancybox-inline-box"
-                                        >
-                                            <div
-                                                class="inline-embed"
-                                                data-embed-type="image"
-                                                :data-embed-url="`${tempSrc()}/img/uploads/portfolio/portfolio-thumb-02-large.jpg`"
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-more">
-                                <span class="ajax-loader"></span>
-                                <button class="btn btn-border ripple">
-                                    <i class="rsicon rsicon-add"></i>
+                            <form id="contact" class="form-contact wow fadeInDown"  action="/my_portfolio/index.php" method="POST">
+                            <div class="form-group">
+                                <input
+                                class="username form-control" 
+                                type="text" 
+                                name="username" 
+                                placeholder="Type Your Name"
+                                value="">
+                                <i class="fa fa-user fa-fw"></i>
+                                <span class="asterisx"></span>
+                                <span class="fa fa-check"></span>
+                                <div class="alert alert-danger alert-dismissible custom-alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="experience" class="section section-experience">
-                        <div class="animate-up">
-                            <h2 class="section-title">Work Experience</h2>
-                            <div class="timeline">
-                                <div class="timeline-bar"></div>
-                                <div class="timeline-inner clearfix">
-                                    <div class="timeline-box timeline-box-left" v-for="work in user.experiences" :key="work.id">
-                                        <span class="dot"></span>
-                                        <div
-                                            class="timeline-box-inner animate-right"
-                                        >
-                                            <span class="arrow"></span>
-                                            <div class="date">{{work.from}} - {{work.to}}</div>
-                                            <h3>{{work.company}}</h3>
-                                            <h4>{{work.position}}</h4>
-                                            <p>
-                                                {{work.description}}
-                                            </p>
-                                        </div>
-                                    </div>
+                                <strong> Oh snap! </strong> Your Name Must Be Larger Than 5 charcters
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <section id="education" class="section section-education">
-                        <div class="animate-up">
-                            <h2 class="section-title">Education</h2>
-                            <div class="timeline">
-                                <div class="timeline-bar"></div>
-                                <div class="timeline-inner clearfix">
-                                    <div
-                                        class="timeline-box timeline-box-compact timeline-box-left"
-                                     v-for="edu in user.education" :key="edu.id">
-                                        <span class="dot"></span>
-                                        <div
-                                            class="timeline-box-inner animate-right"
-                                        >
-                                            <span class="arrow"></span>
-                                            <div class="date">
-                                                <span>{{edu.from}} - {{edu.to}}</span>
-                                            </div>
-                                            <h3>
-                                                {{edu.name}}
-                                            </h3>
-                                            <h4 v-if="edu.university != null">{{edu.university}}</h4>
-                                            <h4 v-if="edu.faculty != null">{{edu.faculty}}</h4>
-                                            <h4 v-if="edu.description != null">{{edu.description}}</h4>
-                                        </div>
-                                    </div>
+                            <div class="form-group">
+                                <input
+                                id="tip_email" 
+                                class="email form-control" 
+                                type="email" 
+                                name="email" 
+                                placeholder="E-mail"
+                                value="">
+                                <i class="fa fa-envelope fa-fw"></i>
+                                <span class="asterisx textarea"></span>
+                                <span class="fa fa-check textarea"></span>
+                                <div class="alert alert-danger alert-dismissible custom-alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <strong> Oh snap! </strong> Put Your E-mail
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <section id="clients" class="section section-clients">
-                        <div class="animate-up">
-                            <div class="clients-carousel">
-                                <div class="client-logo">
-                                    <a
-                                        href="http://market.envato.com/"
-                                        target="_blank"
-                                        ><img
-                                            :src="`${tempSrc()}/img/uploads/logos/logo-envato.png`"
-                                            title="envato"
-                                            alt="envato"
-                                    /></a>
-                                </div>
-                                <div class="client-logo">
-                                    <img
-                                        :src="`${tempSrc()}/img/uploads/logos/logo-angularjs.png`"
-                                        title="angular js"
-                                        alt="angular js"
-                                    />
-                                </div>
-                                <div class="client-logo">
-                                    <a
-                                        href="https://www.omniref.com/ruby/gems/teaspoon/0.7.9"
-                                        target="_blank"
-                                        ><img
-                                            :src="`${tempSrc()}/img/uploads/logos/logo-teaspoon.png`"
-                                            title="teaspoon"
-                                            alt="teaspoon"
-                                    /></a>
-                                </div>
-                                <div class="client-logo">
-                                    <a
-                                        href="https://wordpress.com/"
-                                        target="_blank"
-                                        ><img
-                                            :src="`${tempSrc()}/img/uploads/logos/logo-wordpress.png`"
-                                            title="wordpress"
-                                            alt="wordpress"
-                                    /></a>
-                                </div>
-                                <div class="client-logo">
-                                    <a
-                                        href="https://evernote.com/"
-                                        target="_blank"
-                                        ><img
-                                            :src="`${tempSrc()}/img/uploads/logos/logo-evernote.png`"
-                                            title="evernote"
-                                            alt="evernote"
-                                    /></a>
-                                </div>
-                                <div class="client-logo">
-                                    <a
-                                        href="http://compass-style.org/"
-                                        target="_blank"
-                                        ><img
-                                            :src="`${tempSrc()}/img/uploads/logos/logo-compass.png`"
-                                            title="compass"
-                                            alt="compass"
-                                    /></a>
-                                </div>
-                                <div class="client-logo">
-                                    <a
-                                        href="https://getbootstrap.com/"
-                                        target="_blank"
-                                        ><img
-                                            :src="`${tempSrc()}/img/uploads/logos/logo-bootstrap.png`"
-                                            title="bootstrap"
-                                            alt="bootstrap"
-                                    /></a>
-                                </div>
-                                <div class="client-logo">
-                                    <a
-                                        href="https://jasmine.github.io/"
-                                        target="_blank"
-                                        ><img
-                                            :src="`${tempSrc()}/img/uploads/logos/logo-jasmine.png`"
-                                            title="jasmine"
-                                            alt="jasmine"
-                                    /></a>
-                                </div>
-                                <div class="client-logo">
-                                    <a
-                                        href="https://jquery.com/"
-                                        target="_blank"
-                                        ><img
-                                            :src="`${tempSrc()}/img/uploads/logos/logo-jquery.png`"
-                                            title="jquery"
-                                            alt="jquery"
-                                    /></a>
+                            <div class="form-group">
+                                <input 
+                                class="phone form-control" 
+                                type="text" 
+                                name="cellphone" 
+                                placeholder="Type Your Phone"
+                                value="">
+                                <i class="fa fa-phone fa-fw"></i>
+                                <span class="asterisx"></span>
+                                <span class="fa fa-check"></span>
+                                <div class="alert alert-danger alert-dismissible custom-alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <strong> Oh snap! </strong> Type Your Phone
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <section id="references" class="section section-references">
-                        <div class="animate-up">
-                            <h2 class="section-title">References</h2>
-                            <div class="section-box">
-                                <ul class="ref-slider">
-                                    <li>
-                                        <div class="ref-box">
-                                            <div class="person-speech">
-                                                <p>
-                                                    I confirm that I have dealt
-                                                    with New Company Ltd since
-                                                    1998. Their work has been a
-                                                    major factor in our
-                                                    website's success, helping
-                                                    it to become one of the most
-                                                    visited resources of its
-                                                    kind on the Internet.
-                                                </p>
-                                            </div>
-                                            <div class="person-info clearfix">
-                                                <img
-                                                    class="person-img"
-                                                    :src="`${tempSrc()}/img/uploads/rs-avatar-60x60.jpg`"
-                                                    alt="Headshot"
-                                                />
-                                                <div class="person-name-title">
-                                                    <span class="person-name"
-                                                        >Alexander
-                                                        Jokovich</span
-                                                    >
-                                                    <span class="person-title"
-                                                        >Modern LLC , HR</span
-                                                    >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ref-box">
-                                            <div class="person-speech">
-                                                <p>
-                                                    I confirm that New Company
-                                                    Ltd has been a customer of
-                                                    ours since 1998, during
-                                                    which time they have always
-                                                    made payments reliably, in
-                                                    full and on time.
-                                                </p>
-                                            </div>
-                                            <div class="person-info clearfix">
-                                                <img
-                                                    class="person-img"
-                                                    :src="`${tempSrc()}/img/uploads/rs-avatar-60x60.jpg`"
-                                                    alt="Headshot"
-                                                />
-                                                <div class="person-name-title">
-                                                    <span class="person-name"
-                                                        >Alexander
-                                                        Jokovich</span
-                                                    >
-                                                    <span class="person-title"
-                                                        >Modern LLC , HR</span
-                                                    >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ref-box">
-                                            <div class="person-speech">
-                                                <p>
-                                                    I have known {{user.first_name+' '+user.last_name}}
-                                                    for 10 years as web
-                                                    developer. I can confirm
-                                                    that he is a man of great
-                                                    integrity, is extremely
-                                                    dedicated to his family and
-                                                    work, and is entirely
-                                                    peace-loving.
-                                                </p>
-                                            </div>
-                                            <div class="person-info clearfix">
-                                                <img
-                                                    class="person-img"
-                                                    :src="`${tempSrc()}/img/uploads/rs-avatar-60x60.jpg`"
-                                                    alt="Headshot"
-                                                />
-                                                <div class="person-name-title">
-                                                    <span class="person-name"
-                                                        >Alexander
-                                                        Jokovich</span
-                                                    >
-                                                    <span class="person-title"
-                                                        >Modern LLC , HR</span
-                                                    >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="ref-slider-nav">
-                                    <span
-                                        id="ref-slider-prev"
-                                        class="slider-prev"
-                                    ></span>
-                                    <span
-                                        id="ref-slider-next"
-                                        class="slider-next"
-                                    ></span>
+    
+                            <div class="form-group">
+                                <textarea 
+                                class="message form-control"
+                                name="message" 
+                                rows="4"
+                                placeholder="Type Your Message:"></textarea>
+                                <span class="asterisx textarea"></span>
+                                <span id="check" class="fa fa-check textarea"></span>
+                                <div class="alert alert-danger alert-dismissible custom-alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong> Oh snap! </strong> Message Can't be Less Than 10 charcters
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <section id="prices" class="section section-prices">
-                        <div class="animate-up">
-                            <h2 class="section-title">Pricing</h2>
-                            <div class="row price-list">
-                                <div class="col-sm-4">
-                                    <div class="price-box">
-                                        <div class="price-box-top">
-                                            <span>$16</span><small>/mo</small>
-                                        </div>
-                                        <div class="price-box-content">
-                                            <h3>Basic</h3>
-                                            <ul>
-                                                <li>Manage tasks</li>
-                                                <li>Discussions in tasks</li>
-                                                <li>
-                                                    File sharing
-                                                    <span class="new">new</span>
-                                                </li>
-                                                <li>
-                                                    <del
-                                                        >Real-time Activity
-                                                        Stream</del
-                                                    >
-                                                </li>
-                                                <li>
-                                                    <del>Spreadsheet View</del>
-                                                </li>
-                                                <li>
-                                                    <del
-                                                        >iPhone and Android
-                                                        apps</del
-                                                    >
-                                                </li>
-                                                <li>
-                                                    <del
-                                                        >Advanced email
-                                                        integration</del
-                                                    >
-                                                </li>
-                                                <li>
-                                                    <del
-                                                        >Basic Integrations</del
-                                                    >
-                                                </li>
-                                            </ul>
-                                            <div class="btn-wrap">
-                                                <a
-                                                    class="btn btn-lg btn-border"
-                                                    href="https://themeforest.net/user/px-lab/portfolio?ref=PX-lab"
-                                                    >Buy Now</a
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="price-box box-primary">
-                                        <div class="price-box-top">
-                                            <span>$50</span><small>/mo</small>
-                                        </div>
-                                        <div class="price-box-content">
-                                            <h3>Professional</h3>
-                                            <ul>
-                                                <li>Manage tasks</li>
-                                                <li>Discussions in tasks</li>
-                                                <li>
-                                                    File sharing
-                                                    <span class="new">new</span>
-                                                </li>
-                                                <li>
-                                                    Real-time Activity Stream
-                                                </li>
-                                                <li>
-                                                    Spreadsheet View
-                                                    <span class="new">new</span>
-                                                </li>
-                                                <li>
-                                                    <del
-                                                        >iPhone and Android
-                                                        apps</del
-                                                    >
-                                                </li>
-                                                <li>
-                                                    <del
-                                                        >Advanced email
-                                                        integration</del
-                                                    >
-                                                </li>
-                                                <li>
-                                                    <del
-                                                        >Basic Integrations</del
-                                                    >
-                                                </li>
-                                            </ul>
-                                            <div class="btn-wrap">
-                                                <a
-                                                    class="btn btn-lg btn-border"
-                                                    href="https://themeforest.net/user/px-lab/portfolio?ref=PX-lab"
-                                                    >Buy Now</a
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="price-box">
-                                        <div class="price-box-top">
-                                            <span>$250</span><small>/mo</small>
-                                        </div>
-                                        <div class="price-box-content">
-                                            <h3>Enterprise</h3>
-                                            <ul>
-                                                <li>Manage tasks</li>
-                                                <li>Discussions in tasks</li>
-                                                <li>
-                                                    File sharing
-                                                    <span class="new">new</span>
-                                                </li>
-                                                <li>
-                                                    Real-time Activity Stream
-                                                </li>
-                                                <li>
-                                                    Spreadsheet View
-                                                    <span class="new">new</span>
-                                                </li>
-                                                <li>iPhone and Android apps</li>
-                                                <li>
-                                                    Advanced email integration
-                                                </li>
-                                                <li>Basic Integrations</li>
-                                            </ul>
-                                            <div class="btn-wrap">
-                                                <a
-                                                    class="btn btn-lg btn-border"
-                                                    href="https://themeforest.net/user/px-lab/portfolio?ref=PX-lab"
-                                                    >Buy Now</a
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="btn-submit">
+                                <input 
+                                id="btn-submit" 
+                                class="btn btn-info btn-block" 
+                                type="submit" 
+                                name="submit" 
+                                value="Send Message"
+                                onsubmit="submitajaxform();">
+                                <span class="before"></span>
+                                <span class="after"></span>
                             </div>
+                            <input 
+                                type="hidden" 
+                                id="ad_id" 
+                                name="ad_id" />
+                            </form>
                         </div>
-                    </section>
-                    <section id="blog" class="section section-blog">
-                        <div class="animate-up">
-                            <h2 class="section-title">From The Blog</h2>
-                            <div class="blog-grid">
-                                <div class="grid-sizer"></div>
-                                <div class="grid-item">
-                                    <article class="post-box">
-                                        <div class="post-media">
-                                            <div class="post-image">
-                                                <a href="single.html"
-                                                    ><img
-                                                        :src="`${tempSrc()}/img/uploads/thumb-449x286-1.jpg`"
-                                                        alt=""
-                                                    />
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="post-data">
-                                            <time
-                                                class="post-datetime"
-                                                datetime="2015-03-13T07:44:01+00:00"
-                                            >
-                                                <span class="day">03</span>
-                                                <span class="month">MAY</span>
-                                            </time>
-                                            <div class="post-tag">
-                                                <a href="#">#Photo</a>
-                                                <a href="#">#Architect</a>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="single-image.html"
-                                                    >Image Post</a
-                                                >
-                                            </h3>
-                                            <div class="post-info">
-                                                <a href="#"
-                                                    ><i
-                                                        class="rsicon rsicon-user"
-                                                    ></i
-                                                    >by admin</a
-                                                >
-                                                <a href="#"
-                                                    ><i
-                                                        class="rsicon rsicon-comments"
-                                                    ></i
-                                                    >56</a
-                                                >
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="grid-item">
-                                    <article class="post-box">
-                                        <div class="post-media">
-                                            <div class="post-image">
-                                                <a href="single-vimeo.html">
-                                                    <img
-                                                        :src="`${tempSrc()}/img/uploads/thumb-449x286-5.jpg`"
-                                                        alt=""
-                                                    />
-                                                    <span class="post-type-icon"
-                                                        ><i
-                                                            class="rsicon rsicon-play"
-                                                        ></i
-                                                    ></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="post-data">
-                                            <time
-                                                class="post-datetime"
-                                                datetime="2015-03-13T07:44:01+00:00"
-                                            >
-                                                <span class="day">03</span>
-                                                <span class="month">MAY</span>
-                                            </time>
-                                            <div class="post-tag">
-                                                <a href="#">#Photo</a>
-                                                <a href="#">#Architect</a>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="single-vimeo.html"
-                                                    >Vimeo Video Post</a
-                                                >
-                                            </h3>
-                                            <div class="post-info">
-                                                <a href="#"
-                                                    ><i
-                                                        class="rsicon rsicon-user"
-                                                    ></i
-                                                    >by admin</a
-                                                >
-                                                <a href="#"
-                                                    ><i
-                                                        class="rsicon rsicon-comments"
-                                                    ></i
-                                                    >56</a
-                                                >
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
                         </div>
-                    </section>
-                    <section id="text-section" class="section section-text">
-                        <div class="animate-up animated">
-                            <h2 class="section-title">Text Section</h2>
-                            <div class="section-box">
-                                <p>
-                                    Hello! I’m {{user.first_name+' '+user.last_name}} and this is custom
-                                    editor section. You can add here any text or
-                                    "Strikethrough" text and even you can add
-                                    bulleted or numbered text and even you will
-                                    be able to add blockquot text. You can align
-                                    this text to left/right/center. One of the
-                                    most interesting options is to divide this
-                                    section to "One half" "One Third" and "One
-                                    Fourth". You can use this for Honors or
-                                    Achievments or Awards sections. You can
-                                    insert images and photos right in this
-                                    editor!
-                                </p>
-                            </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+        </footer>
+        <!-- Start Copyright -->
+    
+        <!-- Start Copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <p>
+                            Made with
+                            <i id="heart" class="fa fa-heart animated Pulse"></i>
+                            by
+                            <strong>
+                            <a href="https://www.facebook.com/mahmoud.h.hammad.1" target="_blank">
+                                Mahmoud Hammad
+                            </a>
+                            </strong>
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="social">
+                            <ul class="social-icon list-unstyled">
+                                <li>
+                                    <a href="https://www.facebook.com/mahmoud.h.hammad.1" target="_blank">
+                                    <i class="fa fa-facebook"></i>
+                                    <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/MahmoudHammad93" target="_blank">
+                                    <i class="fa fa-twitter"></i>
+                                    <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myaccount.google.com/?utm_source=OGB&utm_medium=act&pli=1" target="_blank">
+                                    <i class="fa fa-google-plus-square"></i>
+                                    <i class="fa fa-google-plus-square"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/mahmoud-hammad-29a3ab15a/" target="_blank">
+                                    <i class="fa fa-linkedin"></i>
+                                    <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://codepen.io/mahmoud_hammad93/" target="_blank">
+                                    <i class="fa fa-codepen"></i>
+                                    <i class="fa fa-codepen"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/Mahmoudhammad93" target="_blank">
+                                    <i class="fa fa-github"></i>
+                                    <i class="fa fa-github"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                    </section>
-                    <section id="interests" class="section section-interests">
-                        <div class="animate-up">
-                            <h2 class="section-title">My Interests</h2>
-                            <div class="section-box">
-                                <p>
-                                    I have a keen interest in photography. I was
-                                    vice-president of the photography club
-                                    during my time at university, and during
-                                    this period I organised a number of very
-                                    successful exhibitions and events both on
-                                    and off campus. <br />I also play the piano
-                                    to grade 8 standard.
-                                </p>
-                                <ul class="interests-list">
-                                    <li>
-                                        <i
-                                            class="map-icon map-icon-bicycling"
-                                        ></i>
-                                        <span>Bicycling</span>
-                                    </li>
-                                    <li>
-                                        <i
-                                            class="map-icon map-icon-movie-theater"
-                                        ></i>
-                                        <span>Watch Movies</span>
-                                    </li>
-                                    <li>
-                                        <i
-                                            class="map-icon map-icon-ice-skating"
-                                        ></i>
-                                        <span>Skating</span>
-                                    </li>
-                                    <li>
-                                        <i
-                                            class="map-icon map-icon-shopping-mall"
-                                        ></i>
-                                        <span>Shopping</span>
-                                    </li>
-                                    <li>
-                                        <i class="map-icon map-icon-tennis"></i>
-                                        <span>Playing Tennis</span>
-                                    </li>
-                                    <li>
-                                        <i
-                                            class="map-icon map-icon-bowling-alley"
-                                        ></i>
-                                        <span>Playing Bowling</span>
-                                    </li>
-                                    <li>
-                                        <i
-                                            class="map-icon map-icon-swimming"
-                                        ></i>
-                                        <span>Swimming</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="calendar" class="section section-calendar">
-                        <div class="animate-up">
-                            <h2 class="section-title">Availability Calendar</h2>
-                            <div class="calendar-busy" data-weekstart="monday">
-                                <div
-                                    class="calendar-today"
-                                    :style="{ backgroundImage: `url(${tempSrc}/img/uploads/rs-calendar-cover.jpg)` }"
-                                >
-                                    <div class="valign-outer">
-                                        <div class="valign-middle">
-                                            <div class="valign-inner">
-                                                <div class="date">
-                                                    <span class="day"></span>
-                                                    <span class="month"></span>
-                                                </div>
-                                                <div class="week-day"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="calendar-cont">
-                                    <div class="calendar-header">
-                                        <div class="calendar-nav">
-                                            <span class="active-date"
-                                                ><span
-                                                    class="active-month"
-                                                ></span
-                                                ><span
-                                                    class="active-year"
-                                                ></span
-                                            ></span>
-                                            <a
-                                                class="calendar-prev ripple-centered"
-                                                title="Prev"
-                                                ><i
-                                                    class="rsicon rsicon-chevron_left"
-                                                ></i
-                                            ></a>
-                                            <a
-                                                class="calendar-next ripple-centered"
-                                                title="Next"
-                                                ><i
-                                                    class="rsicon rsicon-chevron_right"
-                                                ></i
-                                            ></a>
-                                        </div>
-                                    </div>
-                                    <table class="calendar-body">
-                                        <thead class="calendar-thead"></thead>
-                                        <tbody class="calendar-tbody"></tbody>
-                                    </table>
-                                    <div class="calendar-busy-note">
-                                        Sorry. I'm not available on those days
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="contact" class="section section-contact">
-                        <div class="animate-up">
-                            <h2 class="section-title">Contact Me</h2>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="section-box contact-form">
-                                        <h3>Feel free to contact me</h3>
-                                        <form
-                                            class="contactForm"
-                                            action="https://rscard.px-lab.com/html/php/contact_form.php"
-                                            method="post"
-                                        >
-                                            <div class="input-field">
-                                                <input
-                                                    class="contact-name"
-                                                    type="text"
-                                                    name="name"
-                                                />
-                                                <span class="line"></span>
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="input-field">
-                                                <input
-                                                    class="contact-email"
-                                                    type="email"
-                                                    name="email"
-                                                />
-                                                <span class="line"></span>
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="input-field">
-                                                <input
-                                                    class="contact-subject"
-                                                    type="text"
-                                                    name="subject"
-                                                />
-                                                <span class="line"></span>
-                                                <label>Subject</label>
-                                            </div>
-                                            <div class="input-field">
-                                                <textarea
-                                                    class="contact-message"
-                                                    rows="4"
-                                                    name="message"
-                                                ></textarea>
-                                                <span class="line"></span>
-                                                <label>Message</label>
-                                            </div>
-                                            <span
-                                                class="btn-outer btn-primary-outer ripple"
-                                            >
-                                                <input
-                                                    class="contact-submit btn btn-lg btn-primary"
-                                                    type="submit"
-                                                    value="Send"
-                                                />
-                                            </span>
-                                            <div class="contact-response"></div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div
-                                        class="section-box contact-info has-map"
-                                    >
-                                        <ul class="contact-list">
-                                            <li class="clearfix">
-                                                <strong>Address</strong>
-                                                <span
-                                                    >Belgium, Brussels, Liutte
-                                                    27, BE</span
-                                                >
-                                            </li>
-                                            <li class="clearfix">
-                                                <strong>phone</strong>
-                                                <span
-                                                    ><a href="tel:+12562548456"
-                                                        >+1 256 254 84 56</a
-                                                    ></span
-                                                >
-                                            </li>
-                                            <li class="clearfix">
-                                                <strong>E-mail</strong>
-                                                <span
-                                                    ><a
-                                                        href="https://rscard.px-lab.com/cdn-cgi/l/email-protection#72001d10170006011f1b061a32111d1f02131c0b5c111d1f"
-                                                        ><span
-                                                            class="__cf_email__"
-                                                            data-cfemail="7e0c111c1b0c0a0d13170a163e1d11130e1f1007501d1113"
-                                                            >[email&#160;protected]</span
-                                                        ></a
-                                                    ></span
-                                                >
-                                            </li>
-                                        </ul>
-                                        <div
-                                            id="map"
-                                            data-latitude="29.611551944972128"
-                                            data-longitude="31.319439348470603"
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    </div>
                 </div>
             </div>
-            <footer class="footer">
-                <div class="footer-social">
-                    <ul class="social">
-                        <li>
-                            <a class="ripple-centered" href="#" target="_blank"
-                                ><i class="rsicon rsicon-facebook"></i
-                            ></a>
-                        </li>
-                        <li>
-                            <a class="ripple-centered" href="#" target="_blank"
-                                ><i class="rsicon rsicon-twitter"></i
-                            ></a>
-                        </li>
-                        <li>
-                            <a class="ripple-centered" href="#" target="_blank"
-                                ><i class="rsicon rsicon-linkedin"></i
-                            ></a>
-                        </li>
-                        <li>
-                            <a class="ripple-centered" href="#" target="_blank"
-                                ><i class="rsicon rsicon-google-plus"></i
-                            ></a>
-                        </li>
-                        <li>
-                            <a class="ripple-centered" href="#" target="_blank"
-                                ><i class="rsicon rsicon-dribbble"></i
-                            ></a>
-                        </li>
-                        <li>
-                            <a class="ripple-centered" href="#" target="_blank"
-                                ><i class="rsicon rsicon-instagram"></i
-                            ></a>
-                        </li>
-                    </ul>
-                </div>
-            </footer>
         </div>
-        <a class="btn-scroll-top" href="#"
-            ><i class="rsicon rsicon-arrow-up"></i
-        ></a>
-        <div id="overlay"></div>
-        <div id="preloader">
-            <div class="preload-icon"><span></span><span></span></div>
-            <div class="preload-text">Loading ...</div>
+        <!-- End Copyright -->
+        <!--Start Scroll To Top-->
+        <div id="scroll-top">
+            <a href="#" data-value="hom">
+                <i class="fa fa-angle-up fa-2x"></i>
+            </a>
         </div>
+        <!--End Scroll To Top-->
+        <!-- Start Loading Page -->
+        <div id="loading-page" class="loading-page">
+            <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+            </div>
+            <div class="text-holder text-center">
+                <h3>Mahmoud Hammad</h3>
+                <h6>Engineer and software developer</h6>
+            </div>
+        </div>
+        <!-- End Loading Page -->
     </div>
 </template>
 
@@ -1904,17 +852,21 @@
 export default {
     props:[
         'temp_src',
-        'public_path'
+        'public_path',
+        'public'
     ],
     data(){
         return{
-            user:{}
+            user:{},
+            cv:''
         }
     },
     mounted(){
         this.get_resume_info()
+        console.log(this.user)
     },
     created(){
+        
     },
     methods:{
         tempSrc(){
@@ -1922,8 +874,9 @@ export default {
         },
         get_resume_info(){
             axios.get(`get_resume_info`).then((res) => {
-                console.log(res.data.cv[0])
                 this.user = res.data
+                this.cv = res.data.cv.file
+                console.log(res.data)
             })
         }
     }

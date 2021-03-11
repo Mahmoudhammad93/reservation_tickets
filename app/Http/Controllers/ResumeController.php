@@ -15,6 +15,7 @@ class ResumeController extends Controller
 {
     //
     public function get_resume_info(){
+        // return 'test';
         $user = User::with('education','cv','skills','experiences')->first();
         return $user;
     }

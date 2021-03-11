@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Permission;
+use App\Ticket;
 
 class UsersController extends Controller
 {
@@ -66,12 +67,14 @@ class UsersController extends Controller
         if($flag){
             $user = User::with('permissions')->find($id);
             $permissions = Permission::all();
+            $permission_id = Ticket::where('user_id',$id)->first();
         }else{
             $user = User::find($id);
             $permissions = Permission::all();
+            $permission_id = Ticket::where('user_id',$id)->first();
         }
-        // return $permissions;
-        return view('admin.users.edit',compact('user','permissions'));
+        // return $permission_id;
+        return view('admin.users.edit',compact('user','permissions','permission_id'));
     }
 
     public function update_user(Request $request, $id){

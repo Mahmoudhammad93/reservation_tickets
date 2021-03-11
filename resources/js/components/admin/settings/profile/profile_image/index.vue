@@ -53,6 +53,7 @@ export default {
       formData.append('image', this.file);
       axios.post(`/admin/image_update`,formData, {"Content-Type": "multipart/form-data"})
       .then((res) => {
+        console.log(res.data);
         Vue.$toast.success('Profile image changed successfully.', {})
         this.$emit('newImg',res.data)
       });

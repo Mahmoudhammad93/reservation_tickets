@@ -93,6 +93,7 @@
                                     <permissions
                                         :data="permission"
                                         :user_id="user.id"
+                                        :permission_id="permission_id"
                                     ></permissions>
                                 </div>
                             </div>
@@ -114,7 +115,10 @@
 
 <script>
 export default {
-    props: ["user_data"],
+    props: [
+        "user_data",
+        "permission_id"
+    ],
     data() {
         return {
             user: {},
@@ -135,8 +139,13 @@ export default {
     },
     methods: {
         submitForm() {
-            axios
-                .post(`/admin/user/${this.user.id}/update`, {
+            let token = document.head.querySelector('meta[name="csrf-token"]');
+            if (token) {
+                window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+            } else {
+                console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+            }
+            axios.post(`/admin/user/${this.user.id}/update`, {
                     user: this.user,
                     permissions: this.user.permissions
                 })

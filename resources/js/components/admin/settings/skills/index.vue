@@ -6,7 +6,7 @@
                     <h4 class="title p-3">
                         Add Your Skills
                     </h4>
-                    <div class="edu_card skills mb-2" v-for="skill in skills" :key="skill.id">
+                    <div class="edu_card skills mb-2" v-for="skill in skills" :key="skill.id" :style="`border-bottom: 4px solid ${skill.color}`">
                         <div class="options">
                             <span class="edit" @click="editskill(skill)">
                                 <i class="mdi mdi-pencil"></i> Edit
@@ -26,6 +26,11 @@
                             </li>
                             <li>
                                 <p>{{skill.experince}}</p>
+                            </li>
+                            <li>
+                                <p class="image">
+                                    <img :src="`${public_path}/${skill.image}`" alt="">
+                                </p>
                             </li>
                         </ul>
                     </div>
@@ -62,6 +67,32 @@
                                 <option value="More than 7 year">More than 7 year</option>
                             </select>
                         </div>
+                        <div class="form-group mb-1">
+                            <label for="percent">Skill Image</label>
+                            <input
+                                type="file"
+                                class="form-control"
+                                id="percent"
+                                name="percent"
+                                placeholder="Skill Image"
+                                ref="skill_img"
+                            />
+                        </div>
+                        <div class="form-group mb-1">
+                            <label for="percent">Color</label>
+                            <input
+                                type="color"
+                                class="form-control"
+                                id="color"
+                                name="color"
+                                placeholder="Skill Color"
+                                v-model="skills.color"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Skill Description</label>
+                            <textarea v-model="skills.description" class="form-control" name="description" id="description" placeholder="Skill Description"></textarea>
+                        </div>
                         <button
                             @click.prevent="updateskill(obj_id, skills)"
                             v-if="update"
@@ -89,13 +120,16 @@
 
 <script>
 export default {
-    props:[],
+    props:[
+        'public_path'
+    ],
     data(){
         return{
             skills:[],
             show: false,
             update: false,
             obj_id:null,
+            file:{}
         }
     },
     created(){
@@ -106,15 +140,25 @@ export default {
     },
     methods:{
         addskill(obj){
-            console.log(obj)
+            this.file = this.$refs.skill_img.files[0];
+            let formData = new FormData();
+            formData.append('name', obj.name);
+            formData.append('percent', obj.percent);
+            formData.append('experince', obj.experince);
+            formData.append('color', obj.color);
+            formData.append('desc', obj.description);
+            formData.append('file', this.file);
+            console.log(formData)
             if (obj.name != null && obj.percent != null, experince != null){
-                axios.post(`/admin/add_skill`,{name: obj.name, percent: obj.percent, experince: obj.experince}).then((res) => {
+                axios.post(`/admin/add_skill`,formData).then((res) => {
                     console.log(res.data)
                     Vue.$toast.success('skill Added Successfully.', {})
                     this.skills.push(res.data)
                     this.skills.name = null;
                     this.skills.percent = null;
                     this.skills.experince = null;
+                    this.skills.color = null;
+                    this.skills.description = null;
                 })
             }else{
                 Vue.$toast.error('Complete your info.', {})
@@ -145,13 +189,22 @@ export default {
         },
         updateskill(obj_id, obj){
             const object = this.skills.find( ({ id }) => id === obj_id );
-            console.log(object)
+            this.file = this.$refs.skill_img.files[0];
+            let formData = new FormData();
+            formData.append('name', obj.name);
+            formData.append('percent', obj.percent);
+            formData.append('experince', obj.experince);
+            formData.append('color', obj.color);
+            formData.append('desc', obj.description);
+            formData.append('file', this.file);
             if (obj.name != null && obj.percent != null){
-                axios.post(`/admin/update_skill/${object.id}`,{name: obj.name, percent: obj.percent, experince: obj.experince}).then((res) => {
+                axios.post(`/admin/update_skill/${object.id}`,formData).then((res) => {
+                    console.log(res.data)
                     Vue.$toast.success('skill Updated Successfully.', {})
                     object.name = res.data.name
                     object.percent = res.data.percent
                     object.experince = res.data.experince
+                    object.description = res.data.description
                 })
             }else{
                 Vue.$toast.error('Complete your info.', {})
@@ -161,6 +214,9 @@ export default {
             this.skills.name = null;
             this.skills.percent = null;
             this.skills.experince = null
+        },
+        selectColor(e){
+            this.skills.color = e.target.value
         }
     }
 }

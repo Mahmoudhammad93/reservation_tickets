@@ -46,7 +46,7 @@
                     <Profile v-if="show == 'profile'" :defaultSrc="default_src"></Profile>
                     <Education v-if="show == 'education'"></Education>
                     <Work_Experince v-if="show == 'work_experince'"></Work_Experince>
-                    <Skills v-if="show == 'skills'"></Skills>
+                    <Skills v-if="show == 'skills'" :public_path="default_src"></Skills>
                     <CV v-if="show == 'cv'" :public_path="default_src" :user_id="user.id"></CV>
                     <Languages v-if="show == 'languages'"></Languages>
                 </div>

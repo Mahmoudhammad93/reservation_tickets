@@ -37,13 +37,10 @@
                                         <td>{{ticket.f_name +" "+ ticket.l_name}}</td>
                                         <td>{{ticket.deadline}}</td>
                                         <td>
-                                            <p v-for="perm in JSON.parse(permissions)" :key="perm.id">
-                                                <a v-if="auth_type == 'admin' || perm.open == 1" :href="`/admin/ticket/${ticket.id}`" class="btn btn-primary">View</a>
-                                                <a v-if="auth_type == 'admin' || perm.edit == 1" :href="`/admin/ticket/${ticket.id}/edit`" class="btn btn-success">Edit</a>
-                                                <a v-if="auth_type == 'admin' || perm.delete == 1" :href="`/admin/ticket/${ticket.id}/delete`" class="btn btn-danger" @click.prevent="delete_ticket(ticket)">Delete</a>
-                                                <a v-if="auth_type == 'admin' || perm.close == 1" :href="`/admin/ticket/${ticket.id}/close`" class="btn btn-secondary">Close</a>
-                                            </p>
-
+                                            <a v-if="auth_type == 'admin' || ticket.open == 1" :href="`/admin/ticket/${ticket.id}`" class="btn btn-primary">View</a>
+                                            <a v-if="auth_type == 'admin' || ticket.edit == 1" :href="`/admin/ticket/${ticket.id}/edit`" class="btn btn-success">Edit</a>
+                                            <a v-if="auth_type == 'admin' || ticket.delete == 1" :href="`/admin/ticket/${ticket.id}/delete`" class="btn btn-danger" @click.prevent="delete_ticket(ticket)">Delete</a>
+                                            <a v-if="auth_type == 'admin' || ticket.close == 1" :href="`/admin/ticket/${ticket.id}/close`" class="btn btn-secondary">Close</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -71,7 +68,8 @@ export default {
     },
     created(){
         console.log(JSON.parse(this.permissions));
-        console.log(JSON.parse(this.permissions).map(item => item));
+        console.log(JSON.parse(this.data));
+        // console.log(JSON.parse(this.permissions).map(item => item));
         this.perms = JSON.parse(this.permissions).map(item => item.user_id)
         this.tickets = JSON.parse(this.data)
     },

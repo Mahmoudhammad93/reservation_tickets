@@ -40,6 +40,7 @@ class TicketsController extends Controller
     }
 
     public function store(Request $request){
+        // return $request;
         $row = Ticket::create([
             'name' => $request['name'],
             'deadline' => $request['end_date'],
@@ -59,21 +60,25 @@ class TicketsController extends Controller
 
     public function tickets_api($id){
         header("Access-Control-Allow-Origin: *");
-        $data = Ticket::where('user_id',$id)
-        ->join('users','users.id','tickets.user_id')
-        ->select('users.first_name as f_name','users.last_name as l_name','tickets.name','tickets.deadline','tickets.id')
-        ->where('tickets.deadline','>=', date('Y-m-d'))
-        ->get();
-        // return date('Y-m-d');
-        $permissions = Permission::where('User_id',$id)->get();
-        $data = Ticket::join('users','users.id','tickets.user_id')
-        ->select('users.first_name as f_name','users.last_name as l_name','tickets.name','tickets.deadline','tickets.id')
-        ->where('tickets.deadline','>=', date('Y-m-d'))
-        ->get();
-        // return date('Y-m-d');
-        $permissions = Permission::where('User_id',$id)->get();
+        $user = User::where('id', $id)->first();
+        if($user->type == 'user'){
+            $data = Ticket::where('user_id',$id)
+            ->join('users','users.id','tickets.user_id')
+            ->select('users.first_name as f_name','users.last_name as l_name','tickets.name','tickets.deadline','tickets.id')
+            ->where('tickets.deadline','>=', date('Y-m-d'))
+            ->get();
+            // return date('Y-m-d');
+            $permissions = Permission::where('User_id',$id)->get();
+        }else{
+            $data = Ticket::join('users','users.id','tickets.user_id')
+            ->select('users.first_name as f_name','users.last_name as l_name','tickets.name','tickets.deadline','tickets.id')
+            ->where('tickets.deadline','>=', date('Y-m-d'))
+            ->get();
+            // return date('Y-m-d');
+            $permissions = Permission::where('User_id',$id)->get();
+        }
 
-        $data['permissions'] = $permissions;
-        return response()->json($data);
+
+        return response()->json(['data'=> $data, 'permissions'=> $permissions]);
     }
 }
