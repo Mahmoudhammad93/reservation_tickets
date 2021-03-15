@@ -1,5 +1,4 @@
 function previewImage(event, field){
-    console.log(field)
     var render = new FileReader();
     var imageField = document.getElementById(field);
 

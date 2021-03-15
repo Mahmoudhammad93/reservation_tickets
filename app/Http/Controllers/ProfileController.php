@@ -9,6 +9,7 @@ use App\Experience;
 use App\Skill;
 use App\Resume;
 use App\Language;
+use App\Portfolio;
 use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
@@ -30,6 +31,7 @@ class ProfileController extends Controller
     }
 
     public function update_profile(Request $request, $id){
+        // return $request;
         $user = User::find($id);
         if($request->file('cover')){
 
@@ -46,8 +48,10 @@ class ProfileController extends Controller
         $user->gender = $request['gender'];
         $user->address = $request['address'];
         $user->country = $request['country'];
+        $user->job_title = $request['job_title'];
         $user->nationality = $request['nationality'];
         $user->phone = $request['phone'];
+        $user->another_phone = $request['another_phone'];
         $user->age = $request['age'];
         $user->cover_letter = $request['cover_letter'];
 
@@ -366,5 +370,58 @@ class ProfileController extends Controller
 
         $language->save();
         return $language;
+    }
+
+    public function add_project(Request $request){
+        // return $request;
+        $work = new Portfolio;
+        if($request->file('file')){
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('storage/file'),$filename);
+            $work->image = $filename;
+        }
+
+        $work->name = $request['name'];
+        $work->link = $request['link'];
+        $work->description = $request['description'];
+        $work->userId = auth()->user()->id;
+
+        $work->save();
+        return $work;
+    }
+
+    public function get_projects(){
+        $works = Portfolio::where('userId',auth()->user()->id)->get();
+        return $works;
+    }
+
+    public function get_project($id){
+        $row = Portfolio::find($id);
+        return $row;
+    }
+
+    public function delete_project($id){
+        $row = Portfolio::find($id)->delete();
+    }
+
+    public function update_project(Request $request, $id){
+        $work = Portfolio::find($id);
+        if($request->file('file')){
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('storage/file'),$filename);
+            $work->image = $filename;
+        }
+
+        $work->name = $request['name'];
+        $work->link = $request['link'];
+        $work->description = $request['description'];
+        $work->userId = auth()->user()->id;
+
+        $work->save();
+        return $work;
     }
 }

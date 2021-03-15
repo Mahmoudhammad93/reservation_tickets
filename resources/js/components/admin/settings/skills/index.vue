@@ -67,27 +67,37 @@
                                 <option value="More than 7 year">More than 7 year</option>
                             </select>
                         </div>
-                        <div class="form-group mb-1">
-                            <label for="percent">Skill Image</label>
-                            <input
-                                type="file"
-                                class="form-control"
-                                id="percent"
-                                name="percent"
-                                placeholder="Skill Image"
-                                ref="skill_img"
-                            />
-                        </div>
-                        <div class="form-group mb-1">
-                            <label for="percent">Color</label>
-                            <input
-                                type="color"
-                                class="form-control"
-                                id="color"
-                                name="color"
-                                placeholder="Skill Color"
-                                v-model="skills.color"
-                            />
+                        <div class="multi-input">
+                            <div class="form-group">
+                                <div class="profile_image cover">
+                                    <label class="label-img" for="cover">
+                                        <img class="profile-user-img img-fluid def" :src="`${public_path}/default.png`" id="skill_image" />
+                                        <span class="before">
+                                            <i class="mdi mdi-camera"></i>
+                                            Skill Image
+                                        </span>
+                                    </label>
+                                    <input
+                                        id="cover"
+                                        ref="skill_img"
+                                        class="form-control image"
+                                        type="file"
+                                        name="percent"
+                                        onchange="previewImage(event,'skill_image')"
+                                        />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="color">Color</label>
+                                <input
+                                    type="color"
+                                    class="form-control"
+                                    id="color"
+                                    name="color"
+                                    placeholder="Skill Color"
+                                    v-model="skills.color"
+                                />
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="description">Skill Description</label>
@@ -129,7 +139,8 @@ export default {
             show: false,
             update: false,
             obj_id:null,
-            file:{}
+            file:{},
+            user:{}
         }
     },
     created(){

@@ -16,7 +16,6 @@ $(function () {
 	var scrollBotton = $("#scroll-top");
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
-        console.log(scrollTop);
         if (scrollTop >= 600) {
             scrollBotton.addClass('fade-scrolltop');
         } else {

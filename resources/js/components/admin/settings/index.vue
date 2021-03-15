@@ -37,6 +37,9 @@
                                     <li id="languages_tab" class="tab_link">
                                         <a @click.prevent="showContent('languages')" href="#" :class="(show == 'languages')?'active':''">Languages</a>
                                     </li>
+                                    <li id="portfolio_tab" class="tab_link">
+                                        <a @click.prevent="showContent('portfolio')" href="#" :class="(show == 'portfolio')?'active':''">Portfolio</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -49,6 +52,7 @@
                     <Skills v-if="show == 'skills'" :public_path="default_src"></Skills>
                     <CV v-if="show == 'cv'" :public_path="default_src" :user_id="user.id"></CV>
                     <Languages v-if="show == 'languages'"></Languages>
+                    <Portfolio v-if="show == 'portfolio'" :public_path="default_src"></Portfolio>
                 </div>
                 <div class="col-md-2 col-sm-4 mb-4">
                     <ProfileImage @newImg="newImg" :defaultSrc="default_src"></ProfileImage>
@@ -65,7 +69,7 @@ export default {
     ],
     data(){
         return{
-            show: 'profile',
+            show: 'portfolio',
             user:{}
         }
     },

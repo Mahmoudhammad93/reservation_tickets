@@ -173,10 +173,14 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                         <span class="nav-profile-name">
-                        {{-- {{auth()->user()->first_name .' '. auth()->user()->last_name}} --}}
+                            @if(auth()->user())
+                                {{auth()->user()->first_name .' '. auth()->user()->last_name}}
+                            @endif
                         </span>
                         <span class="online-status"></span>
-                        <img src="{{asset('storage/file/'.auth()->user()->image)}}" alt="profile"/>
+                        @if(auth()->user())
+                            <img src="{{asset('storage/file/'.auth()->user()->image)}}" alt="profile"/>
+                        @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a href="{{route('profile')}}" class="dropdown-item">

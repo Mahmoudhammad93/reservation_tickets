@@ -23,6 +23,10 @@
                         <input v-model="user.phone" type="number" class="form-control" name="phone" id="phone" placeholder="Phone">
                     </div>
                     <div class="form-group">
+                        <label for="another_phone">Another Phone</label>
+                        <input v-model="user.another_phone" type="number" class="form-control" name="another_phone" id="another_phone" placeholder="Another Phone">
+                    </div>
+                    <div class="form-group">
                         <label for="gender">Gender</label>
                         <select class="form-control" v-model="user.gender" name="gender" id="gender" placeholder="Gender">
                             <option value="male">Male</option>
@@ -48,6 +52,10 @@
                             <option>Germany</option>
                             <option>Argentina</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="job_title">Job Title</label>
+                        <input v-model="user.job_title" type="text" class="form-control" name="job_title" id="job_title" placeholder="Job Title">
                     </div>
                     <div class="form-group">
                         <label for="nationalty">Nationalty</label>
@@ -114,10 +122,12 @@ export default {
             formData.append('last_name', this.user.last_name)
             formData.append('email', this.user.email)
             formData.append('phone', this.user.phone)
+            formData.append('another_phone', this.user.another_phone)
             formData.append('gender', this.user.gender)
             formData.append('address', this.user.address)
             formData.append('age', this.user.age)
             formData.append('country', this.user.country)
+            formData.append('job_title', this.user.job_title)
             formData.append('nationality', this.user.nationality)
             formData.append('cover_letter', this.user.cover_letter)
             axios.post(`/admin/update_user/${this.user.id}`,formData, {"Content-Type": "multipart/form-data"}).then((res) => {

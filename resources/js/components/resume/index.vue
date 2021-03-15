@@ -20,10 +20,10 @@
                      <div class="card-body">
                          <div class="card-header">
                              <h4 class="title">
-                                 Mahmoud Hammad
+                                 {{user.first_name+ ' ' +user.last_name}}
                              </h4>
                              <p class="desc">
-                                  Engineer and software developer
+                                  {{user.job_title}}
                              </p>
                          </div>
                          <div class="card-content">
@@ -42,9 +42,9 @@
                                  <li>
                                      <i class="fa fa-mobile"></i>
                                       <p>
-                                     0111 189 3717
+                                     {{user.another_phone}}
                                      -
-                                     0100 446 0433 <img class="whats" :src="`${temp_src}/img/whats.png`">
+                                     {{user.phone}} <img class="whats" :src="`${temp_src}/img/whats.png`">
                                      </p>
                                  </li>
                              </ul>
@@ -124,428 +124,7 @@
                                 </div>
                             </div>
                             <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown oop">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/oop.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    OOP
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">70%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="70"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown laravel">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/laravel.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    LARAVEL(MVC)
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">85%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="85"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown mysql">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/mysql.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    MYSQL
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">77%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="77"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown postger">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/postgresql.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    POSTGRESQL
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">70%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="70"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown git">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/git.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    GIT VERSION CONTROL
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">70%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="70"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown html">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/html.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    HTML & HTML5
-                                </h4>
-                            </div>
-                            <!-- Progress Box -->
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">100%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="100"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown css">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/css3.jpg`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    CSS & CSS3
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">95%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="95"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown bootstrap">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/bootstrap.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    BOOTSTRAP & BOOTSTRAP4
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">93%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="93"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown materialize">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/materialize.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    MATERIALIZE
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">93%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="93"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown sass">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/sass.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    SASS
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">77%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="77"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown javascript">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/javascript.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    JAVASCRIPT
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">90%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="90"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown jquery">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/jquery.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    JQUERY
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">90%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="90"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown gulp">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/gulp.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    GULP
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">80%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="80"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown gulp">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/pug.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    PUG
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">80%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="80"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown react">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/react.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    REACT.JS
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">60%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="60"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown vue">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/vue.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    VUE.JS
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">85%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="85"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown angular">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/angular.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    ANGULAR & ANGULAR4
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">60%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="50"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown ajax">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/ajax.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    AJAX
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">80%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="80"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown es6">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/es6.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    ECMASCRIPT6 "ES6"
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">70%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="70"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center wow fadeInDown photoshop">
-                            <div class="box-img">
-                                <img :src="`${temp_src}/img/skills/photoshop.png`" alt="HTML Icon">
-                            </div>
-                            <div class="box-header">
-                                <h4 class="title">
-                                    PHOTOSHOP
-                                </h4>
-                            </div>
-                            <div class="progress-box wow fadeInDown">
-                                <h5><span class="color-heading pull-right">50%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-color-base" role="progressbar" data-width="50"></div>
-                                </div>
-                            </div>
-                            <div class="box-desc">
-                                <p> is simply dummy text of the printing and typesetting industry.</p>
+                                <p> {{skill.description}} </p>
                             </div>
                         </div>
                     </div>
@@ -563,16 +142,17 @@
             </div>
             <div class="container">
                 <div class="col-lg-12 lay">
-                    <div class="col-lg-4">
-                        <div class="img wow fadeInDown">
-                            <div class="overlay">
-                                <a href="img/work/slider-1.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
-                                <a href="http://novochem.net" class="fa fa-link" target="_blank"></a>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="img wow fadeInDown">
+                                <div class="overlay">
+                                    <a href="img/work/slider-1.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
+                                    <a href="http://novochem.net" class="fa fa-link" target="_blank"></a>
                                 </div>
                                 <img :src="`${temp_src}/img/work/slider-1.png`">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 col-md-4">
                             <div class="img wow fadeInDown" data-wow-delay="0.3s">
                                 <div class="overlay">
                                 <a href="img/work/slider-7.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
@@ -581,7 +161,7 @@
                                 <img :src="`${temp_src}/img/work/slider-7.png`">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 col-md-4">
                             <div class="img wow fadeInDown" data-wow-delay="0.6s">
                                 <div class="overlay">
                                 <a href="img/work/slider-3.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
@@ -590,7 +170,7 @@
                                 <img :src="`${temp_src}/img/work/slider-3.png`">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 col-md-4">
                             <div class="img wow fadeInDown">
                                 <div class="overlay">
                                 <a href="img/work/slider-4.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
@@ -599,7 +179,7 @@
                                 <img :src="`${temp_src}/img/work/slider-4.png`">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 col-md-4">
                             <div class="img wow fadeInDown" data-wow-delay="0.3s">
                                 <div class="overlay">
                                 <a href="img/work/slider-9.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
@@ -608,7 +188,7 @@
                                 <img :src="`${temp_src}/img/work/slider-9.png`">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 col-md-4">
                             <div class="img wow fadeInDown" data-wow-delay="0.6s">
                                 <div class="overlay">
                                 <a href="img/work/slider-6.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
@@ -618,7 +198,8 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
+            </div>
         </section>
         <!-- /end portfolio -->
     

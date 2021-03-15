@@ -106,4 +106,11 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('categories','CategoriesController@index');
     Route::get('categories/create','CategoriesController@create');
     Route::post('categories/store','CategoriesController@store');
+
+    // To get and set projects in portfolio
+    Route::post('add_project', 'ProfileController@add_project');
+    Route::get('get_projects', 'ProfileController@get_projects');
+    Route::get('get_project/{id}', 'ProfileController@get_project');
+    Route::post('delete_project/{id}', 'ProfileController@delete_project');
+    Route::post('update_project/{id}', 'ProfileController@update_project');
 });

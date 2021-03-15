@@ -1,96 +1,94 @@
 <template>
     <div class="languages">
-        <div class="cv">
-            <div class="card card-primary card-outline">
-                <div class="card-body">
-                    <h3 class="title m-0 p-3">Languages</h3>
-                    <div class="edu_card languages mb-2" v-for="language in languages" :key="language.id">
-                        <div class="options">
-                            <span class="edit" @click="editLanguage(language)">
-                                <i class="mdi mdi-pencil"></i> Edit
-                            </span>
-                            <span class="delete" @click="removeLanguage(language)">
-                                <i class="mdi mdi-delete"></i> Delete
-                            </span>
-                        </div>
-                        <div class="edu_title">
-                            <h4>
-                                {{language.name}}
-                            </h4>
-                        </div>
-                        <ul class="list-unstyled m-0 list-arrow">
-                            <li>
-                                <p>{{language.speak}} in speaking</p>
-                            </li>
-                            <li>
-                                <p>{{language.read}} in reading</p>
-                            </li>
-                            <li>
-                                <p>{{language.write}} writing</p>
-                            </li>
-                        </ul>
+        <div class="card card-primary card-outline">
+            <div class="card-body">
+                <h3 class="title m-0 p-3">Languages</h3>
+                <div class="edu_card languages mb-2" v-for="language in languages" :key="language.id">
+                    <div class="options">
+                        <span class="edit" @click="editLanguage(language)">
+                            <i class="mdi mdi-pencil"></i> Edit
+                        </span>
+                        <span class="delete" @click="removeLanguage(language)">
+                            <i class="mdi mdi-delete"></i> Delete
+                        </span>
                     </div>
-                    <form class="forms-sample" v-if="show" @submit.prevent="addLanguage(languages)">
-                        <div class="form-group mb-1">
-                            <label for="name">Language</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="name"
-                                name="name"
-                                placeholder="Put Your Language"
-                                v-model="languages.name"
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="speaking">Select Speaking Level</label>
-                            <select class="form-control" v-model="languages.speaking" name="speaking" id="speaking">
-                                <option selected="selected" disabled="disabled" hidden="hidden" value="">Select Speaking Level</option>
-                                <option value="beginner">Beginner</option>
-                                <option value="intermediate">Intermediate</option>
-                                <option value="advanced">Advanced</option>
-                                <option value="fluent">Fluent</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="reading">Select Reading Level</label>
-                            <select class="form-control" v-model="languages.reading" name="reading" id="reading">
-                                <option selected="selected" disabled="disabled" hidden="hidden" value="">Select Reading Level</option>
-                                <option value="beginner">Beginner</option>
-                                <option value="intermediate">Intermediate</option>
-                                <option value="advanced">Advanced</option>
-                                <option value="fluent">Fluent</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="writing">Select Writing Level</label>
-                            <select class="form-control" v-model="languages.writing" name="writing" id="writing">
-                                <option selected="selected" disabled="disabled" hidden="hidden" value="">Select Writing Level</option>
-                                <option value="beginner">Beginner</option>
-                                <option value="intermediate">Intermediate</option>
-                                <option value="advanced">Advanced</option>
-                                <option value="fluent">Fluent</option>
-                            </select>
-                        </div>
-                        <button
-                            @click.prevent="updatelanguage(obj_id, languages)"
-                            v-if="update"
-                            class="btn btn-success btn-block mr-2"
-                        >
-                            Update
-                        </button>
-                        <button
-                            type="submit"
-                            class="btn btn-primary btn-block mr-2"
-                            v-else
-                        >
-                            Save
-                        </button>
-                    </form>
-                    <div class="mt-4">
-                        <a href="" @click.prevent="show =! show; update =! update" v-if="show">- Cancel</a>
-                        <a href="" @click.prevent="show =! show; addNew()" v-else>+ Add language</a>
+                    <div class="edu_title">
+                        <h4>
+                            {{language.name}}
+                        </h4>
                     </div>
+                    <ul class="list-unstyled m-0 list-arrow">
+                        <li>
+                            <p>{{language.speak}} in speaking</p>
+                        </li>
+                        <li>
+                            <p>{{language.read}} in reading</p>
+                        </li>
+                        <li>
+                            <p>{{language.write}} writing</p>
+                        </li>
+                    </ul>
+                </div>
+                <form class="forms-sample" v-if="show" @submit.prevent="addLanguage(languages)">
+                    <div class="form-group mb-1">
+                        <label for="name">Language</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            placeholder="Put Your Language"
+                            v-model="languages.name"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="speaking">Select Speaking Level</label>
+                        <select class="form-control" v-model="languages.speaking" name="speaking" id="speaking">
+                            <option selected="selected" disabled="disabled" hidden="hidden" value="">Select Speaking Level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="fluent">Fluent</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reading">Select Reading Level</label>
+                        <select class="form-control" v-model="languages.reading" name="reading" id="reading">
+                            <option selected="selected" disabled="disabled" hidden="hidden" value="">Select Reading Level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="fluent">Fluent</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="writing">Select Writing Level</label>
+                        <select class="form-control" v-model="languages.writing" name="writing" id="writing">
+                            <option selected="selected" disabled="disabled" hidden="hidden" value="">Select Writing Level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="fluent">Fluent</option>
+                        </select>
+                    </div>
+                    <button
+                        @click.prevent="updatelanguage(obj_id, languages)"
+                        v-if="update"
+                        class="btn btn-success btn-block mr-2"
+                    >
+                        Update
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-block mr-2"
+                        v-else
+                    >
+                        Save
+                    </button>
+                </form>
+                <div class="mt-4">
+                    <a href="" @click.prevent="show =! show; update =! update" v-if="show">- Cancel</a>
+                    <a href="" @click.prevent="show =! show; addNew()" v-else>+ Add language</a>
                 </div>
             </div>
         </div>
