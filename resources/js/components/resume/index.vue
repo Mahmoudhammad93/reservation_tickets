@@ -142,59 +142,14 @@
             </div>
             <div class="container">
                 <div class="col-lg-12 lay">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-4" v-for="project in user.portfolio" :key="project.id">
                             <div class="img wow fadeInDown">
                                 <div class="overlay">
-                                    <a href="img/work/slider-1.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
-                                    <a href="http://novochem.net" class="fa fa-link" target="_blank"></a>
+                                    <a :href="`${public_path}/${project.image}`" class="fa fa-eye" data-lightbox="roadtrip"></a>
+                                    <a :href="`${project.link}`" class="fa fa-link" target="_blank"></a>
                                 </div>
-                                <img :src="`${temp_src}/img/work/slider-1.png`">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="img wow fadeInDown" data-wow-delay="0.3s">
-                                <div class="overlay">
-                                <a href="img/work/slider-7.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
-                                <a href="http://oes.inspire.eg/" class="fa fa-link" target="_blank"></a>
-                                </div>
-                                <img :src="`${temp_src}/img/work/slider-7.png`">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="img wow fadeInDown" data-wow-delay="0.6s">
-                                <div class="overlay">
-                                <a href="img/work/slider-3.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
-                                <a href="https://banan.academy/" class="fa fa-link" target="_blank"></a>
-                                </div>
-                                <img :src="`${temp_src}/img/work/slider-3.png`">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="img wow fadeInDown">
-                                <div class="overlay">
-                                <a href="img/work/slider-4.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
-                                <a href="http://novochem.net" class="fa fa-link" target="_blank"></a>
-                                </div>
-                                <img :src="`${temp_src}/img/work/slider-4.png`">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="img wow fadeInDown" data-wow-delay="0.3s">
-                                <div class="overlay">
-                                <a href="img/work/slider-9.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
-                                <a href="http://lcetschool.com/" class="fa fa-link" target="_blank"></a>
-                                </div>
-                                <img :src="`${temp_src}/img/work/slider-9.png`">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="img wow fadeInDown" data-wow-delay="0.6s">
-                                <div class="overlay">
-                                <a href="img/work/slider-6.png" class="fa fa-eye" data-lightbox="roadtrip"></a>
-                                <a href="http://staging.fastkood.com/" class="fa fa-link" target="_blank"></a>
-                                </div>
-                                <img :src="`${temp_src}/img/work/slider-6.png`">
+                                <img :src="`${public_path}/${project.image}`">
                             </div>
                         </div>
                     </div>
@@ -240,13 +195,14 @@
                         <div class="col-lg-10 col-lg-offset-2">
                             <div class="contact-head">
                             </div>
-                            <form id="contact" class="form-contact wow fadeInDown"  action="/my_portfolio/index.php" method="POST">
+                            <form id="contact" class="form-contact wow fadeInDown" @submit="contact_us()">
                             <div class="form-group">
                                 <input
                                 class="username form-control" 
                                 type="text" 
                                 name="username" 
                                 placeholder="Type Your Name"
+                                v-model="msg.name"
                                 value="">
                                 <i class="fa fa-user fa-fw"></i>
                                 <span class="asterisx"></span>
@@ -265,6 +221,7 @@
                                 type="email" 
                                 name="email" 
                                 placeholder="E-mail"
+                                v-model="msg.email"
                                 value="">
                                 <i class="fa fa-envelope fa-fw"></i>
                                 <span class="asterisx textarea"></span>
@@ -282,6 +239,7 @@
                                 type="text" 
                                 name="cellphone" 
                                 placeholder="Type Your Phone"
+                                v-model="msg.phone"
                                 value="">
                                 <i class="fa fa-phone fa-fw"></i>
                                 <span class="asterisx"></span>
@@ -299,6 +257,7 @@
                                 class="message form-control"
                                 name="message" 
                                 rows="4"
+                                v-model="msg.message"
                                 placeholder="Type Your Message:"></textarea>
                                 <span class="asterisx textarea"></span>
                                 <span id="check" class="fa fa-check textarea"></span>
@@ -439,7 +398,8 @@ export default {
     data(){
         return{
             user:{},
-            cv:''
+            cv:'',
+            msg:{}
         }
     },
     mounted(){
@@ -457,6 +417,11 @@ export default {
             axios.get(`get_resume_info`).then((res) => {
                 this.user = res.data
                 this.cv = res.data.cv.file
+                console.log(res.data)
+            })
+        },
+        contact_us(){
+            axios.post(`/admin/contact_us`,this.msg).then((res)=> {
                 console.log(res.data)
             })
         }

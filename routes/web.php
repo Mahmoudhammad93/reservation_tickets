@@ -113,4 +113,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('get_project/{id}', 'ProfileController@get_project');
     Route::post('delete_project/{id}', 'ProfileController@delete_project');
     Route::post('update_project/{id}', 'ProfileController@update_project');
+
+    // To set and get contact us
+    Route::post('contact_us','ContactController@sendMail');
+    Route::get('get_contacts','ContactController@getMails');
+    Route::get('open_mail','ContactController@openMail');
 });

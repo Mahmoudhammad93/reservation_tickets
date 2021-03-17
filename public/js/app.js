@@ -2289,7 +2289,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['default_src'],
   data: function data() {
     return {
-      show: 'portfolio',
+      show: 'profile',
       user: {}
     };
   },
@@ -7547,53 +7547,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['temp_src', 'public_path', 'public'],
   data: function data() {
     return {
       user: {},
-      cv: ''
+      cv: '',
+      msg: {}
     };
   },
   mounted: function mounted() {
@@ -7611,6 +7571,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("get_resume_info").then(function (res) {
         _this.user = res.data;
         _this.cv = res.data.cv.file;
+        console.log(res.data);
+      });
+    },
+    contact_us: function contact_us() {
+      axios.post("/admin/contact_us", this.msg).then(function (res) {
         console.log(res.data);
       });
     }
@@ -44603,9 +44568,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "profile" }, [
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container-fluid" }, [
       _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-3 mb-4" }, [
+        _c("div", { staticClass: "col-md-3 col-lg-2 mb-4" }, [
           _c("div", { staticClass: "sidemenu" }, [
             _c("div", { staticClass: "profile_card" }, [
               _c("div", { staticClass: "card_header" }, [
@@ -44801,7 +44766,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-md-2 col-sm-4 mb-4" },
+          { staticClass: "col-md-2 col-lg-1 col-sm-4 mb-4" },
           [
             _c("ProfileImage", {
               attrs: { defaultSrc: _vm.default_src },
@@ -54293,102 +54258,46 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "col-lg-12 lay" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-              _c("div", { staticClass: "img wow fadeInDown" }, [
-                _vm._m(5),
-                _vm._v(" "),
-                _c("img", {
-                  attrs: { src: _vm.temp_src + "/img/work/slider-1.png" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-              _c(
+          _c(
+            "div",
+            { staticClass: "row justify-content-center" },
+            _vm._l(_vm.user.portfolio, function(project) {
+              return _c(
                 "div",
-                {
-                  staticClass: "img wow fadeInDown",
-                  attrs: { "data-wow-delay": "0.3s" }
-                },
+                { key: project.id, staticClass: "col-lg-4 col-md-4" },
                 [
-                  _vm._m(6),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: { src: _vm.temp_src + "/img/work/slider-7.png" }
-                  })
+                  _c("div", { staticClass: "img wow fadeInDown" }, [
+                    _c("div", { staticClass: "overlay" }, [
+                      _c("a", {
+                        staticClass: "fa fa-eye",
+                        attrs: {
+                          href: _vm.public_path + "/" + project.image,
+                          "data-lightbox": "roadtrip"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("a", {
+                        staticClass: "fa fa-link",
+                        attrs: { href: "" + project.link, target: "_blank" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: { src: _vm.public_path + "/" + project.image }
+                    })
+                  ])
                 ]
               )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "img wow fadeInDown",
-                  attrs: { "data-wow-delay": "0.6s" }
-                },
-                [
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: { src: _vm.temp_src + "/img/work/slider-3.png" }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-              _c("div", { staticClass: "img wow fadeInDown" }, [
-                _vm._m(8),
-                _vm._v(" "),
-                _c("img", {
-                  attrs: { src: _vm.temp_src + "/img/work/slider-4.png" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "img wow fadeInDown",
-                  attrs: { "data-wow-delay": "0.3s" }
-                },
-                [
-                  _vm._m(9),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: { src: _vm.temp_src + "/img/work/slider-9.png" }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "img wow fadeInDown",
-                  attrs: { "data-wow-delay": "0.6s" }
-                },
-                [
-                  _vm._m(10),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: { src: _vm.temp_src + "/img/work/slider-6.png" }
-                  })
-                ]
-              )
-            ])
-          ])
+            }),
+            0
+          )
         ])
       ])
     ]),
     _vm._v(" "),
     _c("footer", { staticClass: "footer" }, [
       _c("section", { staticClass: "contact-me" }, [
-        _vm._m(11),
+        _vm._m(5),
         _vm._v(" "),
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "info" }, [
@@ -54406,21 +54315,202 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(12)
+                _vm._m(6)
               ]),
               _vm._v(" "),
-              _vm._m(13)
+              _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
+                _c("div", { staticClass: "clearfix" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-lg-10 col-lg-offset-2" }, [
+                    _c("div", { staticClass: "contact-head" }),
+                    _vm._v(" "),
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form-contact wow fadeInDown",
+                        attrs: { id: "contact" },
+                        on: {
+                          submit: function($event) {
+                            return _vm.contact_us()
+                          }
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.msg.name,
+                                expression: "msg.name"
+                              }
+                            ],
+                            staticClass: "username form-control",
+                            attrs: {
+                              type: "text",
+                              name: "username",
+                              placeholder: "Type Your Name",
+                              value: ""
+                            },
+                            domProps: { value: _vm.msg.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.msg, "name", $event.target.value)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "fa fa-user fa-fw" }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "asterisx" }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "fa fa-check" }),
+                          _vm._v(" "),
+                          _vm._m(7)
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.msg.email,
+                                expression: "msg.email"
+                              }
+                            ],
+                            staticClass: "email form-control",
+                            attrs: {
+                              id: "tip_email",
+                              type: "email",
+                              name: "email",
+                              placeholder: "E-mail",
+                              value: ""
+                            },
+                            domProps: { value: _vm.msg.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.msg, "email", $event.target.value)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "fa fa-envelope fa-fw" }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "asterisx textarea" }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "fa fa-check textarea" }),
+                          _vm._v(" "),
+                          _vm._m(8)
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.msg.phone,
+                                expression: "msg.phone"
+                              }
+                            ],
+                            staticClass: "phone form-control",
+                            attrs: {
+                              type: "text",
+                              name: "cellphone",
+                              placeholder: "Type Your Phone",
+                              value: ""
+                            },
+                            domProps: { value: _vm.msg.phone },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.msg, "phone", $event.target.value)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "fa fa-phone fa-fw" }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "asterisx" }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "fa fa-check" }),
+                          _vm._v(" "),
+                          _vm._m(9)
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.msg.message,
+                                expression: "msg.message"
+                              }
+                            ],
+                            staticClass: "message form-control",
+                            attrs: {
+                              name: "message",
+                              rows: "4",
+                              placeholder: "Type Your Message:"
+                            },
+                            domProps: { value: _vm.msg.message },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.msg,
+                                  "message",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "asterisx textarea" }),
+                          _vm._v(" "),
+                          _c("span", {
+                            staticClass: "fa fa-check textarea",
+                            attrs: { id: "check" }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(10)
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(11),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", id: "ad_id", name: "ad_id" }
+                        })
+                      ]
+                    )
+                  ])
+                ])
+              ])
             ])
           ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(14),
+    _vm._m(12),
     _vm._v(" "),
-    _vm._m(15),
+    _vm._m(13),
     _vm._v(" "),
-    _vm._m(16)
+    _vm._m(14)
   ])
 }
 var staticRenderFns = [
@@ -54494,102 +54584,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "overlay" }, [
-      _c("a", {
-        staticClass: "fa fa-eye",
-        attrs: { href: "img/work/slider-1.png", "data-lightbox": "roadtrip" }
-      }),
-      _vm._v(" "),
-      _c("a", {
-        staticClass: "fa fa-link",
-        attrs: { href: "http://novochem.net", target: "_blank" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "overlay" }, [
-      _c("a", {
-        staticClass: "fa fa-eye",
-        attrs: { href: "img/work/slider-7.png", "data-lightbox": "roadtrip" }
-      }),
-      _vm._v(" "),
-      _c("a", {
-        staticClass: "fa fa-link",
-        attrs: { href: "http://oes.inspire.eg/", target: "_blank" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "overlay" }, [
-      _c("a", {
-        staticClass: "fa fa-eye",
-        attrs: { href: "img/work/slider-3.png", "data-lightbox": "roadtrip" }
-      }),
-      _vm._v(" "),
-      _c("a", {
-        staticClass: "fa fa-link",
-        attrs: { href: "https://banan.academy/", target: "_blank" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "overlay" }, [
-      _c("a", {
-        staticClass: "fa fa-eye",
-        attrs: { href: "img/work/slider-4.png", "data-lightbox": "roadtrip" }
-      }),
-      _vm._v(" "),
-      _c("a", {
-        staticClass: "fa fa-link",
-        attrs: { href: "http://novochem.net", target: "_blank" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "overlay" }, [
-      _c("a", {
-        staticClass: "fa fa-eye",
-        attrs: { href: "img/work/slider-9.png", "data-lightbox": "roadtrip" }
-      }),
-      _vm._v(" "),
-      _c("a", {
-        staticClass: "fa fa-link",
-        attrs: { href: "http://lcetschool.com/", target: "_blank" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "overlay" }, [
-      _c("a", {
-        staticClass: "fa fa-eye",
-        attrs: { href: "img/work/slider-6.png", "data-lightbox": "roadtrip" }
-      }),
-      _vm._v(" "),
-      _c("a", {
-        staticClass: "fa fa-link",
-        attrs: { href: "http://staging.fastkood.com/", target: "_blank" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "header" }, [
       _c("h4", { staticClass: "title" }, [
         _vm._v("\n                    Contact Me\n                ")
@@ -54627,241 +54621,129 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
-      _c("div", { staticClass: "clearfix" }),
+    return _c(
+      "div",
+      { staticClass: "alert alert-danger alert-dismissible custom-alert" },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "alert",
+              "aria-label": "Close"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        ),
+        _vm._v(" "),
+        _c("strong", [_vm._v(" Oh snap! ")]),
+        _vm._v(
+          " Your Name Must Be Larger Than 5 charcters\n                            "
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "alert alert-danger alert-dismissible custom-alert" },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "alert",
+              "aria-label": "Close"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        ),
+        _vm._v(" "),
+        _c("strong", [_vm._v(" Oh snap! ")]),
+        _vm._v(" Put Your E-mail\n                            ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "alert alert-danger alert-dismissible custom-alert" },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "alert",
+              "aria-label": "Close"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        ),
+        _vm._v(" "),
+        _c("strong", [_vm._v(" Oh snap! ")]),
+        _vm._v(" Type Your Phone\n                            ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "alert alert-danger alert-dismissible custom-alert" },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "alert",
+              "aria-label": "Close"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        ),
+        _vm._v(" "),
+        _c("strong", [_vm._v(" Oh snap! ")]),
+        _vm._v(
+          " Message Can't be Less Than 10 charcters\n                            "
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "btn-submit" }, [
+      _c("input", {
+        staticClass: "btn btn-info btn-block",
+        attrs: {
+          id: "btn-submit",
+          type: "submit",
+          name: "submit",
+          value: "Send Message",
+          onsubmit: "submitajaxform();"
+        }
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-10 col-lg-offset-2" }, [
-          _c("div", { staticClass: "contact-head" }),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "form-contact wow fadeInDown",
-              attrs: {
-                id: "contact",
-                action: "/my_portfolio/index.php",
-                method: "POST"
-              }
-            },
-            [
-              _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  staticClass: "username form-control",
-                  attrs: {
-                    type: "text",
-                    name: "username",
-                    placeholder: "Type Your Name",
-                    value: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-user fa-fw" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "asterisx" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "fa fa-check" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "alert alert-danger alert-dismissible custom-alert"
-                  },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close",
-                        attrs: {
-                          type: "button",
-                          "data-dismiss": "alert",
-                          "aria-label": "Close"
-                        }
-                      },
-                      [
-                        _c("span", { attrs: { "aria-hidden": "true" } }, [
-                          _vm._v("×")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("strong", [_vm._v(" Oh snap! ")]),
-                    _vm._v(
-                      " Your Name Must Be Larger Than 5 charcters\n                            "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  staticClass: "email form-control",
-                  attrs: {
-                    id: "tip_email",
-                    type: "email",
-                    name: "email",
-                    placeholder: "E-mail",
-                    value: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-envelope fa-fw" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "asterisx textarea" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "fa fa-check textarea" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "alert alert-danger alert-dismissible custom-alert"
-                  },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close",
-                        attrs: {
-                          type: "button",
-                          "data-dismiss": "alert",
-                          "aria-label": "Close"
-                        }
-                      },
-                      [
-                        _c("span", { attrs: { "aria-hidden": "true" } }, [
-                          _vm._v("×")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("strong", [_vm._v(" Oh snap! ")]),
-                    _vm._v(" Put Your E-mail\n                            ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  staticClass: "phone form-control",
-                  attrs: {
-                    type: "text",
-                    name: "cellphone",
-                    placeholder: "Type Your Phone",
-                    value: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-phone fa-fw" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "asterisx" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "fa fa-check" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "alert alert-danger alert-dismissible custom-alert"
-                  },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close",
-                        attrs: {
-                          type: "button",
-                          "data-dismiss": "alert",
-                          "aria-label": "Close"
-                        }
-                      },
-                      [
-                        _c("span", { attrs: { "aria-hidden": "true" } }, [
-                          _vm._v("×")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("strong", [_vm._v(" Oh snap! ")]),
-                    _vm._v(" Type Your Phone\n                            ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("textarea", {
-                  staticClass: "message form-control",
-                  attrs: {
-                    name: "message",
-                    rows: "4",
-                    placeholder: "Type Your Message:"
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "asterisx textarea" }),
-                _vm._v(" "),
-                _c("span", {
-                  staticClass: "fa fa-check textarea",
-                  attrs: { id: "check" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "alert alert-danger alert-dismissible custom-alert"
-                  },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close",
-                        attrs: {
-                          type: "button",
-                          "data-dismiss": "alert",
-                          "aria-label": "Close"
-                        }
-                      },
-                      [
-                        _c("span", { attrs: { "aria-hidden": "true" } }, [
-                          _vm._v("×")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("strong", [_vm._v(" Oh snap! ")]),
-                    _vm._v(
-                      " Message Can't be Less Than 10 charcters\n                            "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "btn-submit" }, [
-                _c("input", {
-                  staticClass: "btn btn-info btn-block",
-                  attrs: {
-                    id: "btn-submit",
-                    type: "submit",
-                    name: "submit",
-                    value: "Send Message",
-                    onsubmit: "submitajaxform();"
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "before" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "after" })
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                attrs: { type: "hidden", id: "ad_id", name: "ad_id" }
-              })
-            ]
-          )
-        ])
-      ])
+      _c("span", { staticClass: "before" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "after" })
     ])
   },
   function() {

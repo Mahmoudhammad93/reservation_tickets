@@ -1,8 +1,8 @@
 <template>
     <div class="profile">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 col-lg-2 mb-4">
                     <div class="sidemenu">
                         <div class="profile_card">
                             <div class="card_header">
@@ -54,7 +54,7 @@
                     <Languages v-if="show == 'languages'"></Languages>
                     <Portfolio v-if="show == 'portfolio'" :public_path="default_src"></Portfolio>
                 </div>
-                <div class="col-md-2 col-sm-4 mb-4">
+                <div class="col-md-2 col-lg-1 col-sm-4 mb-4">
                     <ProfileImage @newImg="newImg" :defaultSrc="default_src"></ProfileImage>
                 </div>
             </div>
@@ -69,7 +69,7 @@ export default {
     ],
     data(){
         return{
-            show: 'portfolio',
+            show: 'profile',
             user:{}
         }
     },

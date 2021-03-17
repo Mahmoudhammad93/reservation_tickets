@@ -86,47 +86,13 @@
                     <li class="nav-item dropdown">
                     <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
                         <i class="mdi mdi-email mx-0"></i>
-                        <span class="count bg-primary">4</span>
+                        <span class="count bg-primary"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
                         <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-                        <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="{{asset('layout')}}/images/faces/face4.jpg" alt="image" class="profile-pic">
+                        <div id="result">
+
                         </div>
-                        <div class="preview-item-content flex-grow">
-                            <h6 class="preview-subject ellipsis font-weight-normal">David Grey
-                            </h6>
-                            <p class="font-weight-light small-text text-muted mb-0">
-                                The meeting is cancelled
-                            </p>
-                        </div>
-                        </a>
-                        <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="{{asset('layout')}}/images/faces/face2.jpg" alt="image" class="profile-pic">
-                        </div>
-                        <div class="preview-item-content flex-grow">
-                            <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
-                            </h6>
-                            <p class="font-weight-light small-text text-muted mb-0">
-                                New product launch
-                            </p>
-                        </div>
-                        </a>
-                        <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="{{asset('layout')}}/images/faces/face3.jpg" alt="image" class="profile-pic">
-                        </div>
-                        <div class="preview-item-content flex-grow">
-                            <h6 class="preview-subject ellipsis font-weight-normal">
-                                {{-- {{auth()->user()->first_name .' '. auth()->user()->last_name}} --}}
-                            </h6>
-                            <p class="font-weight-light small-text text-muted mb-0">
-                                Upcoming board meeting
-                            </p>
-                        </div>
-                        </a>
                     </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -336,5 +302,63 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url:"/admin/get_contacts",
+                type: "get",
+                success:function(data){
+                    console.log(data)
+                    var result = ``;
+                    if(data.mails.length > 0){
+                        data.mails.forEach(function(res){
+                            result += `
+                                <a class="dropdown-item preview-item ${(res.status == '0')?'new':''}" data-id="${res.id}">
+                                    <div class="preview-thumbnail">
+                                        <i class="mdi mdi-email text-secondary mx-0"></i>
+                                    </div>
+                                    <div class="preview-item-content flex-grow">
+                                        <h6 class="preview-subject ellipsis font-weight-${(res.status == '0')?'bold':'normal'}">
+                                            ${res.name}
+                                        </h6>
+                                        <p class="font-weight-${(res.status == '0')?'bold':'light'} small-text text-muted mb-0">
+                                            ${res.message}
+                                        </p>
+                                    </div>
+                                </a>
+                            `;
+                        })
+                    }else{
+                        result += `<p class="dropdown-item preview-item">No Messages</p>`;
+                    }
+                    $('#result').append(result);
+                    $('#messageDropdown .count').text(data.count);
+                },
+            });
+        })
+
+        $(document).on('click', '.dropdown-item.preview-item',function(){
+            if($(this).hasClass('new')){
+                var id = $(this).attr('data-id');
+                console.log(id)
+                $.ajax({
+                    url:"/admin/open_mail",
+                    type: "get",
+                    data: {'id': id},
+                    success:function(data){
+                        
+                    },
+                });
+                if($(this).hasClass('new')){
+                    $(this).removeClass('new') 
+                }
+                $(this).children('.preview-item-content').children('.preview-subject').removeClass('font-weight-bold').addClass('font-weight-normal');
+                $(this).children('.preview-item-content').children('p.text-muted').removeClass('font-weight-bold').addClass('font-weight-light');
+                var count = parseInt($('#messageDropdown .count').text());
+                console.log(count)
+                $('#messageDropdown .count').text(count-1)
+            }
+        })
+    </script>
 </body>
 </html>

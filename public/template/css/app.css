@@ -257,6 +257,7 @@ body .portfolio .img {
   margin-bottom: 30px;
   border: 3px solid #fff;
   background-color: #fff;
+  height: 200px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -541,7 +542,7 @@ body .form-contact .form-group textarea {
   background: transparent;
   color: #fff;
   border: 1px solid #4c4c4c;
-  padding: 22px 22px 22px 30px;
+  padding: 14px 22px 14px 35px;
   font-size: 13px;
 }
 body .form-contact .form-group textarea {

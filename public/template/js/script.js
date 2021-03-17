@@ -134,35 +134,26 @@ $(function () {
     // Submit Form Validation
 
     $('.form-contact').submit(function (e) {
-        
+        e.preventDefault();
         if (userError === true || emailError === true || phoneError === true || msgError === true) {
-
-            e.preventDefault();
             $('.username, .email, .phone, .message').blur();
-            $.ajax({
-                url:"../handler.php",
-                type: "POST",
-                error:function(){
-                    swal({
-                      title: "Oops",
-                      text: "Complete Your Info !",
-                      icon: "error",
-                      dangerMode: true,
-                    });
-                },
-            });
+            swal({
+                title: "Oops",
+                text: "Complete Your Info !",
+                icon: "error",
+                dangerMode: true,
+              });
         }else{
-            e.preventDefault();
             $.ajax({
-                url:"../handler.php",
+                url:"/admin/contact_us",
                 type: "POST",
-                complete:function(){
-                   swal({
-                      title: "Good",
-                      text: "Message Sent Successfully !",
-                      icon: "success",
-                      dangerMode: true,
-                    }); 
+                success:function(){
+                    swal({
+                        title: "Good",
+                        text: "Message Sent Successfully !",
+                        icon: "success",
+                        dangerMode: true,
+                    });
                 },
             });
         }
