@@ -197,6 +197,12 @@
                             <span class="menu-title">Tickets</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('messages')}}" class="nav-link">
+                            <i class="mdi mdi-email mx-0"></i>
+                            <span class="menu-title">Messages</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             </nav>
@@ -346,11 +352,11 @@
                     type: "get",
                     data: {'id': id},
                     success:function(data){
-                        
+
                     },
                 });
                 if($(this).hasClass('new')){
-                    $(this).removeClass('new') 
+                    $(this).removeClass('new')
                 }
                 $(this).children('.preview-item-content').children('.preview-subject').removeClass('font-weight-bold').addClass('font-weight-normal');
                 $(this).children('.preview-item-content').children('p.text-muted').removeClass('font-weight-bold').addClass('font-weight-light');

@@ -60,7 +60,7 @@ class ProfileController extends Controller
     }
 
     public function image_update(Request $request){
-        return $request['image'];
+        // return $request['image'];
         $user = User::where('id',auth()->user()->id)->first();
         $file = $request->file('image');
         $extension = $file->getClientOriginalExtension();
@@ -253,7 +253,7 @@ class ProfileController extends Controller
             $file->move(public_path('storage/file'),$filename);
             $skill->image = $filename;
         }
-        
+
         $skill->name = $request['name'];
         $skill->color = $request['color'];
         $skill->percent = $request['percent'];

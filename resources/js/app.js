@@ -36,6 +36,7 @@ import dashboard from './components/admin/dashboard/index.vue';
 import categories from './components/admin/categories/index.vue';
 import create_category from './components/admin/categories/create/index.vue';
 import Portfolio from './components/admin/settings/portfolio/index.vue';
+import Messages from './components/admin/messages/index.vue';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -76,6 +77,8 @@ Vue.component('dashboard', dashboard);
 Vue.component('categories', categories);
 Vue.component('create_category', create_category);
 Vue.component('Portfolio', Portfolio);
+Vue.component('Messages', Messages);
+
 
 
 /**

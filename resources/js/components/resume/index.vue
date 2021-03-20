@@ -17,8 +17,8 @@
                               <img :src="`${public_path}/${user.image}`" alt="V-Card Image">
                          </a>
                      </div>
-                     <div class="card-body">
-                         <div class="card-header">
+                     <div class="card-body p-3 pl-4">
+                         <div class="card-header pl-0">
                              <h4 class="title">
                                  {{user.first_name+ ' ' +user.last_name}}
                              </h4>
@@ -50,7 +50,7 @@
                              </ul>
                              <div class="cv wow fadeInDown">
                               <h2>
-                                Download my Cv: 
+                                Download my Cv:
                                 <a :href="`${public_path}/${cv}`" class="fa fa-file-pdf-o" download="Mahmoud Hammad-Cv" target="_blank"></a>
                               </h2>
                             </div>
@@ -61,11 +61,11 @@
            </div>
         </header>
         <!-- /end header -->
-    
+
         <!-- Start Empty-->
         <div class="empty"></div>
         <!-- /end empty-->
-    
+
         <!-- Start About Me-->
         <section class="about-me">
             <div class="header">
@@ -85,7 +85,7 @@
                                 <p class="p1">
                                     Hello! My name is Mahmoud Hamde Hammad and I'm Web Developer. I have experience in developing a real-time web applications, complex front-end and back-end management systems, social platform applications. All my projects based on and PHP5 in conjunction with other modern web technologies. PHP (native PHP, Laravel), MySQL, jQuery, SASS, HTML5, CSS3, Basic Knowledge in( Angular.js/React.js )are used. While developing an application I always keep in mind SEO optimization and social integration. Furthermore, I'm trying to make my code as clean as possible. In addition, I can convert designs to high quality, cross-browser compatible HTML5/CSS3 markup
                                 </p>
-                                <p class="p2"> 
+                                <p class="p2">
                                     I seeking for a Good long term career opportunity in a respectful company that will enhance and develop my future career. Developing clear, effective and accurate documents for tailored software packages. I have 2 years experience in front end and 8 months in backend and ability to learn new skills Interesting in being Great Programmer in Web. Hope to make apps to help people to make their life easie . now I’m learning Ionic .
                                 </p>
                                 <a href="#" class="more-text text-right">Read More <i class="fa fa-arrow-right"></i></a>
@@ -97,7 +97,7 @@
             </div>
         </section>
         <!-- /end about me-->
-    
+
         <!-- Start My Skills -->
         <section class="my-skills">
             <div class="header">
@@ -106,9 +106,9 @@
                 </h3>
             </div>
             <div class="container">
-                <div class="row">
-                <div class="col-md-4" v-for="skill in user.skills" :key="skill.id">
-                        <div class="box text-center wow fadeInDown php" :style="`border-bottom:4px solid ${skill.color}`">
+                <div class="row justify-content-center">
+                    <div class="col-md-4" v-for="skill in user.skills" :key="skill.id">
+                        <div class="box text-center wow fadeInDown" v-bind:class="skill.name" :style="`border-bottom:4px solid ${skill.color};padding: 1rem 3rem`">
                             <div class="box-img">
                                 <img :src="`${public_path+'/'+skill.image}`" alt="HTML Icon">
                             </div>
@@ -132,7 +132,7 @@
             </div>
         </section>
         <!-- /end my skills -->
-    
+
         <!-- Start Portfolio -->
         <section class="portfolio popup-gallery">
             <div class="header">
@@ -157,7 +157,7 @@
             </div>
         </section>
         <!-- /end portfolio -->
-    
+
         <!-- Start Footer -->
         <footer class="footer">
             <section class="contact-me">
@@ -180,7 +180,7 @@
                             I seeking for a Good long term career opportunity in a respectful company that will enhance and develop my future career. Developing clear, effective and accurate documents for tailored software packages. I have 2 years experience in front end and 8 months in backend and ability to learn new skills Interesting in being Great Programmer in Web. Hope to make apps to help people to make their life easie " now i learning ionic "
                             <div class="signature pull-right">
                             <h5>
-                                signature :- 
+                                signature :-
                             </h5>
                             <span>
                                 Mahmoud Hammad
@@ -198,9 +198,9 @@
                             <form id="contact" class="form-contact wow fadeInDown" @submit="contact_us()">
                             <div class="form-group">
                                 <input
-                                class="username form-control" 
-                                type="text" 
-                                name="username" 
+                                class="username form-control"
+                                type="text"
+                                name="username"
                                 placeholder="Type Your Name"
                                 v-model="msg.name"
                                 value="">
@@ -216,10 +216,10 @@
                             </div>
                             <div class="form-group">
                                 <input
-                                id="tip_email" 
-                                class="email form-control" 
-                                type="email" 
-                                name="email" 
+                                id="tip_email"
+                                class="email form-control"
+                                type="email"
+                                name="email"
                                 placeholder="E-mail"
                                 v-model="msg.email"
                                 value="">
@@ -234,10 +234,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input 
-                                class="phone form-control" 
-                                type="text" 
-                                name="cellphone" 
+                                <input
+                                class="phone form-control"
+                                type="text"
+                                name="cellphone"
                                 placeholder="Type Your Phone"
                                 v-model="msg.phone"
                                 value="">
@@ -251,11 +251,11 @@
                                 <strong> Oh snap! </strong> Type Your Phone
                                 </div>
                             </div>
-    
+
                             <div class="form-group">
-                                <textarea 
+                                <textarea
                                 class="message form-control"
-                                name="message" 
+                                name="message"
                                 rows="4"
                                 v-model="msg.message"
                                 placeholder="Type Your Message:"></textarea>
@@ -269,19 +269,19 @@
                                 </div>
                             </div>
                             <div class="btn-submit">
-                                <input 
-                                id="btn-submit" 
-                                class="btn btn-info btn-block" 
-                                type="submit" 
-                                name="submit" 
+                                <input
+                                id="btn-submit"
+                                class="btn btn-info btn-block"
+                                type="submit"
+                                name="submit"
                                 value="Send Message"
                                 onsubmit="submitajaxform();">
                                 <span class="before"></span>
                                 <span class="after"></span>
                             </div>
-                            <input 
-                                type="hidden" 
-                                id="ad_id" 
+                            <input
+                                type="hidden"
+                                id="ad_id"
                                 name="ad_id" />
                             </form>
                         </div>
@@ -293,7 +293,7 @@
             </section>
         </footer>
         <!-- Start Copyright -->
-    
+
         <!-- Start Copyright -->
         <div class="copyright">
             <div class="container">
@@ -407,7 +407,7 @@ export default {
         console.log(this.user)
     },
     created(){
-        
+
     },
     methods:{
         tempSrc(){
@@ -421,8 +421,15 @@ export default {
             })
         },
         contact_us(){
-            axios.post(`/admin/contact_us`,this.msg).then((res)=> {
-                console.log(res.data)
+            axios.post(`/admin/contact_us`,this.msg)
+            .then((res)=> {
+                Vue.$toast.success('Message Sent Successfully.', {})
+                this.msg.name = ''
+                this.msg.email = ''
+                this.msg.phone = ''
+                this.msg.message = ''
+            }).catch((err) =>{
+                Vue.$toast.error(err, {})
             })
         }
     }

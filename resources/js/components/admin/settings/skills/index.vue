@@ -71,7 +71,8 @@
                             <div class="form-group">
                                 <div class="profile_image cover">
                                     <label class="label-img" for="cover">
-                                        <img class="profile-user-img img-fluid def" :src="`${public_path}/default.png`" id="skill_image" />
+                                        <img class="profile-user-img img-fluid def" v-if="skills.image" :src="`${public_path}/${skills.image}`" id="skill_image" />
+                                        <img class="profile-user-img img-fluid def" v-else :src="`${public_path}/default.png`" id="skill_image" />
                                         <span class="before">
                                             <i class="mdi mdi-camera"></i>
                                             Skill Image
@@ -195,6 +196,9 @@ export default {
                 this.skills.name = res.data.name;
                 this.skills.percent = res.data.percent;
                 this.skills.experince = res.data.experince;
+                this.skills.description = res.data.description;
+                this.skills.image = res.data.image;
+                this.skills.color = res.data.color;
                 this.show = true
             })
         },

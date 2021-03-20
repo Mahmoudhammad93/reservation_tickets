@@ -31,6 +31,12 @@ class ContactController extends Controller
         $row = Contact::where('id',$id)->first();
         $row->status = 1;
         $row->save();
-        return $row;
+    }
+
+    public function messages(){
+        $mails = Contact::all();
+        $new_mails = Contact::where('status',0)->get();
+        $count_new_msg = count($new_mails);
+        return view('admin.messages.index',compact('mails','new_mails','count_new_msg'));
     }
 }

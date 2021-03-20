@@ -118,4 +118,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::post('contact_us','ContactController@sendMail');
     Route::get('get_contacts','ContactController@getMails');
     Route::get('open_mail','ContactController@openMail');
+
+    // To get and set messages
+    Route::get('messages','ContactController@messages')->name('messages');
 });
