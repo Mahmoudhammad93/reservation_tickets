@@ -22952,6 +22952,16 @@ dl li {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+.bg-light,
+.bg-light:hover,
+.bg-light:active,
+a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus{
+    background-color: #f0f3f6  !important;
+}
+
+.bg-light.selected{
+    border: 2px solid #0ddbb9;
+}
 
 .msgs-option{
     margin: 0;

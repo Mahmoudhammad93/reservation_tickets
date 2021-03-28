@@ -197,10 +197,15 @@
                             <span class="menu-title">Tickets</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item messages">
                         <a href="{{route('messages')}}" class="nav-link">
                             <i class="mdi mdi-email mx-0"></i>
-                            <span class="menu-title">Messages</span>
+                            <span class="menu-title">
+                                Messages
+                                <div class="badge badge-danger" id="msgs_count">
+
+                                </div>
+                            </span>
                         </a>
                     </li>
                 </ul>
@@ -338,7 +343,11 @@
                         result += `<p class="dropdown-item preview-item">No Messages</p>`;
                     }
                     $('#result').append(result);
+                    $('#msgs_count').append(data.count);
                     $('#messageDropdown .count').text(data.count);
+                    if(data.count <= 0){
+                        $('#messageDropdown .count, #msgs_count').css('display','none')
+                    }
                 },
             });
         })
@@ -363,7 +372,16 @@
                 var count = parseInt($('#messageDropdown .count').text());
                 console.log(count)
                 $('#messageDropdown .count').text(count-1)
+                $('#msgs_count').text(count-1)
+                if(count <= 1){
+                    $('#messageDropdown .count, #msgs_count').css('display','none')
+                }
             }
+        })
+
+        // Tooltip
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
 </body>

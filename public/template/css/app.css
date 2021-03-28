@@ -257,6 +257,15 @@ body .portfolio {
 body .portfolio .lay {
   z-index: 9999;
 }
+body .portfolio .btn.load-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body .portfolio .btn.load-more .spinner-grow {
+  width: 20px;
+  height: 20px;
+}
 body .portfolio .img {
   margin-bottom: 30px;
   border: 3px solid #fff;
@@ -539,6 +548,9 @@ body .fa-check-circle {
 body .alert {
   margin-bottom: 10px;
   padding: 5px 30px;
+}
+body .form-contact .form-group input {
+  height: 3rem;
 }
 body .form-contact .form-group input,
 body .form-contact .form-group textarea {

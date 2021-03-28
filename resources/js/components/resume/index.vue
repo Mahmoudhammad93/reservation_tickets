@@ -143,7 +143,7 @@
             <div class="container">
                 <div class="col-lg-12 lay">
                     <div class="row justify-content-center">
-                        <div class="col-lg-4 col-md-4" v-for="project in user.portfolio" :key="project.id">
+                        <div class="col-lg-4 col-md-4" v-for="project in portfolio" :key="project.id">
                             <div class="img wow fadeInDown">
                                 <div class="overlay">
                                     <a :href="`${public_path}/${project.image}`" class="fa fa-eye" data-lightbox="roadtrip"></a>
@@ -151,6 +151,18 @@
                                 </div>
                                 <img :src="`${public_path}/${project.image}`">
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row justify-content-center" v-if="lastPage != currentPage">
+                        <div class="col-md-2 col-sm-12">
+                            <button class="btn btn-info btn-block load-more" @click="get_resume_info()">
+                                Load More
+                                <div class="spinner-grow" role="status" v-if="isLoading">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -397,9 +409,14 @@ export default {
     ],
     data(){
         return{
-            user:{},
+            user:[],
             cv:'',
-            msg:{}
+            msg:{},
+            portfolio:[],
+            isLoading:false,
+            lastPage:1,
+            currentPage:null,
+            nextUrl:''
         }
     },
     mounted(){
@@ -414,10 +431,22 @@ export default {
             return this.temp_src
         },
         get_resume_info(){
-            axios.get(`get_resume_info`).then((res) => {
-                this.user = res.data
-                this.cv = res.data.cv.file
-                console.log(res.data)
+            let url = `get_resume_info`;
+            if(this.nextUrl != '' && this.nextUrl != null){
+                url = this.nextUrl
+            }
+            this.isLoading = true
+            axios.get(url).then((res) => {
+                console.log(res.data.user);
+                this.user = res.data.user;
+                this.cv = res.data.user.cv.file;
+                // this.portfolio = res.data.portfolio.data
+                (this.portfolio.length > 0)?this.portfolio = [...this.portfolio, ...res.data.portfolio.data] : this.portfolio = res.data.portfolio.data
+
+                this.nextUrl = res.data.portfolio.next_page_url
+                this.lastPage = res.data.portfolio.last_page
+                this.currentPage = res.data.portfolio.current_page
+                this.isLoading = false
             })
         },
         contact_us(){

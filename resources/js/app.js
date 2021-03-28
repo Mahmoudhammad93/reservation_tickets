@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+
 import VueToast from 'vue-toast-notification';
 import App from './App.vue';
 import router from './router/index';
@@ -49,6 +50,12 @@ import Messages from './components/admin/messages/index.vue';
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 import 'vue-toast-notification/dist/theme-sugar.css';
 Vue.use(VueToast);
+
+import { VTooltip, VPopover, VClosePopover } from 'v-tooltip'
+
+Vue.directive('tooltip', VTooltip)
+Vue.directive('close-popover', VClosePopover)
+Vue.component('v-popover', VPopover)
 
 
 Vue.component('Layout', Layout);

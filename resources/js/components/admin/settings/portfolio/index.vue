@@ -1,8 +1,18 @@
 <template>
     <div id="portfolio">
         <div class="card card-primary card-outline">
-            <div class="card-body">
-                <h4 class="title m-0 p-3">Portfolio</h4>
+            <div class="card-body" v-bind:class="(view_status == 'grid')?'grid':''">
+                <h4 class="title m-0 mb-2 p-3">
+                    Portfolio
+                    <div class="ml-lg-5 d-lg-flex d-none">
+                        <button type="button" class="btn bg-light btn-icon" :class="(view_status == 'grid')?'selected':''" @click="gridView()">
+                            <i class="mdi mdi-view-grid text-success"></i>
+                        </button>
+                        <button type="button" class="btn bg-light btn-icon ml-2" :class="(view_status == 'list')?'selected':''" @click="listView()">
+                            <i class="mdi mdi-format-list-bulleted font-weight-bold text-primary"></i>
+                        </button>
+                    </div>
+                </h4>
                 <div class="edu_card works mb-2" v-for="work in works" :key="work.id">
                     <div class="options">
                         <span class="edit" @click="editWork(work)">
@@ -13,7 +23,7 @@
                         </span>
                     </div>
                     <div class="edu_title">
-                        <h4>
+                        <h4 v-tooltip.top-center="`test`">
                             {{work.name}}
                         </h4>
                     </div>
@@ -65,7 +75,7 @@
                             <div class="profile_image cover">
                                 <label class="label-img" for="cover">
                                     <img class="profile-user-img img-fluid def" v-if="works.image != null" :src="`${public_path}/${works.image}`" id="work_image" />
-                                    <img class="profile-user-img img-fluid def" v-else :src="`${public_path}/default.png`" id="work_image" />
+                                    <img class="profile-user-img img-fluid def" v-else :src="`${public_path}/default.jpg`" id="work_image" />
                                     <span class="before">
                                         <i class="mdi mdi-camera"></i>
                                         work Image
@@ -118,7 +128,8 @@ export default {
             update: false,
             obj_id:null,
             file:{},
-            user:{}
+            user:{},
+            view_status: 'list'
         }
     },
     created(){
@@ -126,6 +137,7 @@ export default {
     },
     mounted(){
         this.get_works()
+        this.setView()
     },
     methods:{
         addWork(obj){
@@ -143,6 +155,7 @@ export default {
                     this.works.push(res.data)
                     this.works.name = null;
                     this.works.link = null;
+                    this.works.image = null;
                     this.works.description = null;
                 })
                 .catch((err) =>{
@@ -197,6 +210,18 @@ export default {
             this.works.link = null;
             this.works.description = null
             this.works.image = null
+        },
+        gridView(){
+            this.view_status = 'grid'
+            localStorage.setItem('view-status', this.view_status)
+        },
+        listView(){
+            this.view_status = 'list'
+            localStorage.setItem('view-status', this.view_status)
+        },
+        setView(){
+            let old_status = localStorage.getItem('view-status');
+            this.view_status = old_status
         }
     }
 }

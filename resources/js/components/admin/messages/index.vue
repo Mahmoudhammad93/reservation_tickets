@@ -4,11 +4,11 @@
             <div class="row">
                 <div class="col-md-3">
                     <ul class="list-unstyled msgs-option">
-                        <li class="active">
+                        <li>
                             <i class="mdi mdi-send"></i>
                             New Message
                         </li>
-                        <li>
+                        <li class="active">
                             <i class="mdi mdi-email"></i>
                             Inbox
                         </li>
@@ -31,12 +31,12 @@
                             </div>
                             <div class="menu">
                                 <ul class="list-unstyled">
-                                    <li>
+                                    <li v-for="msg in messages" :key="msg.id">
                                         <h5>
-                                            mahmoudhammad423@gmail.com
+                                            {{msg.email}}
                                         </h5>
                                         <p>
-                                            Instead of lots of commands to output HTML (as seen in C or Perl), PHP pages contain HTML with embedded code that does "something" (in this case, output "Hi, I'm a PHP script!"). The PHP code is enclosed in special start and end processing instructions <?php and ?> that allow you to jump into and out of "PHP mode."
+                                            {{msg.message}}
                                         </p>
                                     </li>
                                 </ul>
@@ -51,3 +51,11 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props:[
+        'messages'
+    ]
+}
+</script>

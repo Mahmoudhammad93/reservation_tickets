@@ -21,7 +21,7 @@
           @change="upload()"
         />
         <label for="cv" v-if="show">
-          <div class="upload-progress" v-if="!selected">
+          <div class="upload-progress" v-if="selected">
             <div class="file_img">
               <img v-if="file_extention == 'pdf'" :src="public_path+'/images/icons/pdf.png'" alt="">
               <img v-else :src="filesSrc()" />
@@ -55,7 +55,7 @@ export default {
   ],
   data() {
     return {
-        selected: true,
+        selected: false,
         file:{
           name:'default.png'
         },
@@ -76,7 +76,7 @@ export default {
   methods: {
     upload() {
         this.file = this.$refs.file.files[0];
-        this.selected = false;
+        this.selected = true;
         const form = new FormData();
         form.append('file', this.file);
         return axios.post(`/admin/upload_cv`, form, {"Content-Type": "multipart/form-data",
@@ -89,7 +89,7 @@ export default {
             this.fileReault = res.data
             this.file_extention = this.fileReault.file.split('.').pop()
             setTimeout(function(){
-              this.selected = true
+              this.selected = false
             },1000)
         })
         .catch((err) => {

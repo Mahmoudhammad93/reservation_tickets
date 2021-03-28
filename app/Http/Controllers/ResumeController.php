@@ -9,6 +9,7 @@ use App\Experience;
 use App\Skill;
 use App\Resume;
 use App\Language;
+use App\Portfolio;
 use Illuminate\Support\Facades\DB;
 
 class ResumeController extends Controller
@@ -16,7 +17,8 @@ class ResumeController extends Controller
     //
     public function get_resume_info(){
         // return 'test';
-        $user = User::with('education','cv','skills','experiences','portfolio')->first();
-        return $user;
+        $user = User::with('education','cv','skills','experiences')->first();
+        $portfolio = Portfolio::paginate(6);
+        return ['user' => $user, 'portfolio' => $portfolio];
     }
 }

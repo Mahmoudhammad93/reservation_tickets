@@ -2,7 +2,7 @@
     <div class="profile">
         <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-md-3 col-lg-2 mb-4">
+                <div class="col-lg-3 col-md-3 mb-4">
                     <div class="sidemenu">
                         <div class="profile_card">
                             <div class="card_header">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-7 mb-4">
+                <div class="col-lg-7 col-md-7 mb-4">
                     <Profile v-if="show == 'profile'" :defaultSrc="default_src"></Profile>
                     <Education v-if="show == 'education'"></Education>
                     <Work_Experince v-if="show == 'work_experince'"></Work_Experince>
@@ -54,7 +54,7 @@
                     <Languages v-if="show == 'languages'"></Languages>
                     <Portfolio v-if="show == 'portfolio'" :public_path="default_src"></Portfolio>
                 </div>
-                <div class="col-md-2 col-lg-1 col-sm-4 mb-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 mb-4">
                     <ProfileImage @newImg="newImg" :defaultSrc="default_src"></ProfileImage>
                 </div>
             </div>

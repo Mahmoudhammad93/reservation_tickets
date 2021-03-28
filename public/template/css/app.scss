@@ -261,6 +261,15 @@ body{
       .lay {
          z-index: 9999;
       }
+      .btn.load-more{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .spinner-grow{
+            width: 20px;
+            height: 20px;
+        }
+      }
       .img {
          margin-bottom: 30px;
          border: 3px solid #fff;
@@ -585,6 +594,10 @@ body{
  .alert {
    margin-bottom: 10px;
    padding: 5px 30px;
+ }
+
+ .form-contact .form-group input{
+     height: 3rem;
  }
 
  .form-contact .form-group input,

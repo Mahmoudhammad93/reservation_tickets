@@ -182,6 +182,40 @@
     position: relative;
 }
 
+.card-body.grid .edu_card{
+    width: 48%;
+    float: left;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    transition: all .2s ease-in-out;
+}
+
+.card-body.grid .edu_card:hover{
+    box-shadow: 0 0 18px #dedede;
+}
+
+.card-body.grid .edu_card.works.mb-2:nth-of-type(odd) {
+    margin-right: 10px;
+    margin-left: 8px;
+}
+
+.forms-sample{
+    clear: both;
+}
+
+.card-body.grid div.mt-4{
+    clear: both;
+}
+
+.edu_card .edu_title h4 {
+    max-width: 60%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .edu_card .options{
     position: absolute;
     top: 10px;
@@ -214,6 +248,10 @@
 .edu_card ul p{
     font-size: 15px;
     text-transform: capitalize;
+    white-space: nowrap;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .edu_card ul p.image{
@@ -223,6 +261,22 @@
     height: 150px;
 }
 
+.view-options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50px;
+    height: 24px;
+}
+
+.view-options span {
+    font-size: 20px;
+}
+
+.view-options span:hover{
+    cursor: pointer;
+}
+
 .edu_card ul p.image img{
     width: 100%;
     height: 100%;
@@ -230,6 +284,9 @@
 
 .card-body .title{
     border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .list-star li {
