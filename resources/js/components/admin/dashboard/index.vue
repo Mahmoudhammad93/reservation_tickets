@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-sm-8 flex-column d-flex stretch-card">
                 <div class="row">
+                    <h1>Welcome Mr. {{user_name}}</h1>
                     <div class="col-lg-4 d-flex grid-margin stretch-card" v-for="ticket in JSON.parse(data)" :key="ticket.id">
                         <div class="card bg-primary">
                             <div class="card-body text-white">

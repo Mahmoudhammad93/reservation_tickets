@@ -3304,6 +3304,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data', 'user_name'],
   data: function data() {
@@ -53673,40 +53674,44 @@ var render = function() {
         _c(
           "div",
           { staticClass: "row" },
-          _vm._l(JSON.parse(_vm.data), function(ticket) {
-            return _c(
-              "div",
-              {
-                key: ticket.id,
-                staticClass: "col-lg-4 d-flex grid-margin stretch-card"
-              },
-              [
-                _c("div", { staticClass: "card bg-primary" }, [
-                  _c("div", { staticClass: "card-body text-white" }, [
-                    _c(
-                      "a",
-                      {
-                        staticStyle: { color: "#fff" },
-                        attrs: { href: "/admin/ticket/" + ticket.id }
-                      },
-                      [
-                        _c("h3", { staticClass: "font-weight-bold mb-3" }, [
-                          _vm._v(
-                            "\n                                    18,39 (75GB)\n                                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "pb-0 mb-0" }, [
-                          _vm._v(_vm._s(ticket.name))
-                        ])
-                      ]
-                    )
+          [
+            _c("h1", [_vm._v("Welcome Mr. " + _vm._s(_vm.user_name))]),
+            _vm._v(" "),
+            _vm._l(JSON.parse(_vm.data), function(ticket) {
+              return _c(
+                "div",
+                {
+                  key: ticket.id,
+                  staticClass: "col-lg-4 d-flex grid-margin stretch-card"
+                },
+                [
+                  _c("div", { staticClass: "card bg-primary" }, [
+                    _c("div", { staticClass: "card-body text-white" }, [
+                      _c(
+                        "a",
+                        {
+                          staticStyle: { color: "#fff" },
+                          attrs: { href: "/admin/ticket/" + ticket.id }
+                        },
+                        [
+                          _c("h3", { staticClass: "font-weight-bold mb-3" }, [
+                            _vm._v(
+                              "\n                                    18,39 (75GB)\n                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "pb-0 mb-0" }, [
+                            _vm._v(_vm._s(ticket.name))
+                          ])
+                        ]
+                      )
+                    ])
                   ])
-                ])
-              ]
-            )
-          }),
-          0
+                ]
+              )
+            })
+          ],
+          2
         )
       ])
     ])

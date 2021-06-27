@@ -198,7 +198,7 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="content">
-                        <h1>Welcome Mr. {{auth()->user()->first_name.' '.auth()->user()->last_name}}</h1>
+                        {{-- <h1>Welcome Mr. {{auth()->user()->first_name.' '.auth()->user()->last_name}}</h1> --}}
                         <hr class="head-line">
                         @yield('content')
                     </div>
