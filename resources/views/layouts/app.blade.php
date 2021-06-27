@@ -174,7 +174,7 @@
                     </li> --}}
                     <li class="nav-item">
                         <a href="{{route('products')}}" class="nav-link">
-                            <i class="mdi mdi-ticket-account"></i>
+                            <i class="mdi mdi-file-powerpoint-box menu-icon"></i>
                             <span class="menu-title">Products</span>
                         </a>
                     </li>

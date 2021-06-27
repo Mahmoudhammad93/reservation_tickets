@@ -5637,8 +5637,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['auth_type']
+  props: ['auth_type', 'data'],
+  data: function data() {
+    return {
+      products: JSON.parse(this.data)
+    };
+  }
 });
 
 /***/ }),
@@ -58899,16 +58941,81 @@ var render = function() {
                 attrs: { href: "products/create" }
               },
               [
-                _c("i", { staticClass: "mdi mdi-ticket-account" }),
+                _c("i", { staticClass: "mdi mdi-file-powerpoint-box" }),
                 _vm._v("\n                Add Product +\n            ")
               ]
             )
           : _vm._e()
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12 grid-margin stretch-card" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", { staticClass: "card-title" }, [_vm._v("Products")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-striped" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.products, function(product) {
+                    return _c("tr", { key: product.id }, [
+                      _c("td", [_vm._v(_vm._s(product.brand_name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(product.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(product.email))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(product.brand_cr))])
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _vm._v(
+            "\n                                        Product Name\n                                    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                                        User\n                                    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                                        Email\n                                    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                                        Product CR\n                                    "
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

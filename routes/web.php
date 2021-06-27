@@ -126,7 +126,6 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('products', 'ProductsController@index')->name('products');
     Route::get('products/create', 'ProductsController@create')->name('products.create');
     Route::post('product/store', 'ProductsController@store');
-
     // Send mail to users
     Route::get('sendAdminEmail', 'ProductsController@sendAdminEmail')->name('sendAdminEmail');
     Route::post('sendUserEmail', 'ProductsController@sendUserEmail')->name('sendUserEmail');
