@@ -150,8 +150,8 @@
                 <ul class="nav page-navigation">
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('home')}}">
-                            <i class="mdi mdi-file-document-box menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                            <span class="menu-title">Home Page</span>
                         </a>
                     </li>
                     {{-- <li class="nav-item">
@@ -198,6 +198,7 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="content">
+                        <h1>Welcome Mr. {{auth()->user()->first_name.' '.auth()->user()->last_name}}</h1>
                         <hr class="head-line">
                         @yield('content')
                     </div>

@@ -24,7 +24,8 @@
 <script>
 export default {
     props:[
-        'data'
+        'data',
+        'user_name'
     ],
     data(){
         return{
