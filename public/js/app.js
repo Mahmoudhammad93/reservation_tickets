@@ -5674,6 +5674,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['auth_type', 'data'],
   data: function data() {
@@ -58956,25 +58959,31 @@ var render = function() {
             _c("h4", { staticClass: "card-title" }, [_vm._v("Products")]),
             _vm._v(" "),
             _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table table-striped" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.products, function(product) {
-                    return _c("tr", { key: product.id }, [
-                      _c("td", [_vm._v(_vm._s(product.brand_name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(product.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(product.email))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(product.brand_cr))])
-                    ])
-                  }),
-                  0
-                )
-              ])
+              _vm.products.length > 0
+                ? _c("table", { staticClass: "table table-striped" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.products, function(product) {
+                        return _c("tr", { key: product.id }, [
+                          _c("td", [_vm._v(_vm._s(product.brand_name))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(product.name))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(product.email))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(product.brand_cr))])
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                : _c("div", { staticClass: "alert alert-danger mt-4 mb-0" }, [
+                    _vm._v(
+                      "\n                            No Data Found\n                        "
+                    )
+                  ])
             ])
           ])
         ])

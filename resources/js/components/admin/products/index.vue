@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Products</h4>
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" v-if="products.length > 0">
                                 <thead>
                                     <tr>
                                         <th>
@@ -40,6 +40,9 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <div class="alert alert-danger mt-4 mb-0" v-else>
+                                No Data Found
+                            </div>
                         </div>
                     </div>
                 </div>
