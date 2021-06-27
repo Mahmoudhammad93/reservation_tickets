@@ -121,4 +121,11 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     // To get and set messages
     Route::get('messages','ContactController@messages')->name('messages');
+
+    // To get and set products
+    Route::get('products', 'ProductsController@index')->name('products');
+    Route::get('products/create', 'ProductsController@create')->name('products.create');
+    Route::post('product/store', 'ProductsController@store');
+    Route::post('sendAdminEmail', 'ProductsController@sendAdminEmail')->name('sendAdminEmail');
+    Route::post('sendUserEmail', 'ProductsController@sendUserEmail')->name('sendUserEmail');
 });

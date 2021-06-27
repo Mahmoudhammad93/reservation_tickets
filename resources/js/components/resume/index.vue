@@ -157,7 +157,7 @@
                 <div class="col-md-12">
                     <div class="row justify-content-center" v-if="lastPage != currentPage">
                         <div class="col-md-2 col-sm-12">
-                            <button class="btn btn-info btn-block load-more" @click="get_resume_info()">
+                            <button class="btn btn-info btn-block load-more" @click="loadMore()">
                                 Load More
                                 <div class="spinner-grow" role="status" v-if="isLoading">
                                     <span class="sr-only">Loading...</span>
@@ -376,7 +376,7 @@
         </div>
         <!--End Scroll To Top-->
         <!-- Start Loading Page -->
-        <div id="loading-page" class="loading-page">
+        <div id="loading-page" class="loading-page" v-if="loading">
             <div class="sk-circle">
                 <div class="sk-circle1 sk-child"></div>
                 <div class="sk-circle2 sk-child"></div>
@@ -416,7 +416,8 @@ export default {
             isLoading:false,
             lastPage:1,
             currentPage:null,
-            nextUrl:''
+            nextUrl:'',
+            loading: false
         }
     },
     mounted(){
@@ -431,18 +432,24 @@ export default {
             return this.temp_src
         },
         get_resume_info(){
+            this.loading = true
             let url = `get_resume_info`;
-            if(this.nextUrl != '' && this.nextUrl != null){
-                url = this.nextUrl
-            }
-            this.isLoading = true
             axios.get(url).then((res) => {
                 console.log(res.data.user);
                 this.user = res.data.user;
                 this.cv = res.data.user.cv.file;
-                // this.portfolio = res.data.portfolio.data
+                this.portfolio = res.data.portfolio.data
+                this.loading = false
+            })
+        },
+        loadMore(){
+            this.isLoading = true
+            let url = `get_resume_info`;
+            if(this.nextUrl != '' && this.nextUrl != null){
+                url = this.nextUrl
+            }
+            axios.get(url).then((res) => {
                 (this.portfolio.length > 0)?this.portfolio = [...this.portfolio, ...res.data.portfolio.data] : this.portfolio = res.data.portfolio.data
-
                 this.nextUrl = res.data.portfolio.next_page_url
                 this.lastPage = res.data.portfolio.last_page
                 this.currentPage = res.data.portfolio.current_page

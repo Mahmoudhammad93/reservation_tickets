@@ -237,6 +237,7 @@ body .about-me .aboutMe-box .desc a {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  color: #ed7263;
 }
 body .about-me .aboutMe-box .desc a i {
   margin: 0 5px;
@@ -261,10 +262,23 @@ body .portfolio .btn.load-more {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #ed7263;
+  border-color: #ed7263;
+  width: fit-content;
+}
+body .portfolio .btn.load-more:hover, body .portfolio .btn.load-more:active, body .portfolio .btn.load-more:disabled, body .portfolio .btn.load-more:focus {
+  background-color: "#ed726355" !important;
+}
+body .portfolio .btn.load-more:focus {
+  box-shadow: 0 0 0 0.2rem #ed7263;
+}
+body .portfolio .btn.load-more:not(:disabled):not(.disabled).active, body .portfolio .btn.load-more:not(:disabled):not(.disabled):active {
+  background-color: "#ed726390" !important;
 }
 body .portfolio .btn.load-more .spinner-grow {
   width: 20px;
   height: 20px;
+  margin-left: 10px;
 }
 body .portfolio .img {
   margin-bottom: 30px;
@@ -790,7 +804,7 @@ body #scroll-top i {
   color: #111;
 }
 body #scroll-top:hover {
-  background-color: #3281a5;
+  background-color: #ed7263;
 }
 body #scroll-top i:hover {
   color: #FFF;

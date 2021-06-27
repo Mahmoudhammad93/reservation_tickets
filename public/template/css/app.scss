@@ -238,6 +238,7 @@ body{
                display: flex;
                justify-content: flex-end;
                align-items: center;
+               color: $main-color;
                i{
                   margin: 0 5px;
                }
@@ -265,9 +266,26 @@ body{
         display: flex;
         align-items: center;
         justify-content: space-between;
+        background-color: $main-color;
+        border-color: $main-color;
+        width: fit-content;
+        &:hover,
+        &:active,
+        &:disabled,
+        &:focus{
+            background-color: $main-color+'55' !important;
+        }
+        &:focus{
+            box-shadow: 0 0 0 0.2rem $main-color;
+        }
+        &:not(:disabled):not(.disabled).active,
+        &:not(:disabled):not(.disabled):active{
+            background-color: $main-color+'90' !important;
+        }
         .spinner-grow{
             width: 20px;
             height: 20px;
+            margin-left: 10px;
         }
       }
       .img {
@@ -380,8 +398,8 @@ body{
    text-align: justify;
    line-height: 1.6;
    font-size: 15px;
-   border-left: 3px solid #ed7263;
-   border-right: 3px solid #ed7263;
+   border-left: 3px solid $main-color;
+   border-right: 3px solid $main-color;
    padding: 40px;
  }
 
@@ -389,7 +407,7 @@ body{
    content: "";
    width: 200px;
    height: 3px;
-   background-color: #ed7263;
+   background-color: $main-color;
    position: absolute;
    bottom: 0px;
    right: 0;
@@ -399,7 +417,7 @@ body{
    content: "";
    width: 200px;
    height: 3px;
-   background-color: #ed7263;
+   background-color: $main-color;
    position: absolute;
    top: 0px;
    left: 0px;
@@ -454,7 +472,7 @@ body{
          content: "";
          width: 80px;
          height: 3px;
-         border-bottom: 4px double #ed7263;
+         border-bottom: 4px double $main-color;
          position: absolute;
          bottom: 0;
          left: 0;
@@ -885,7 +903,7 @@ body{
  }
 
  #scroll-top:hover {
-   background-color: #3281a5;
+   background-color: $main-color;
  }
 
  #scroll-top i:hover {
@@ -1366,7 +1384,7 @@ body{
          left: 35% !important;
          border-radius: 50%;
          overflow: hidden;
-          background-color: #ed7263;
+          background-color: $main-color;
           padding: 4px;
           box-shadow: 0px 0px 10px #611919ed;
           img{

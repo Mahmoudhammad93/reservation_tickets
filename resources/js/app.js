@@ -38,6 +38,8 @@ import categories from './components/admin/categories/index.vue';
 import create_category from './components/admin/categories/create/index.vue';
 import Portfolio from './components/admin/settings/portfolio/index.vue';
 import Messages from './components/admin/messages/index.vue';
+import Products from './components/admin/products/index.vue';
+import create_product from './components/admin/products/create/index.vue'
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -85,6 +87,8 @@ Vue.component('categories', categories);
 Vue.component('create_category', create_category);
 Vue.component('Portfolio', Portfolio);
 Vue.component('Messages', Messages);
+Vue.component('Products', Products);
+Vue.component('create_product', create_product);
 
 
 

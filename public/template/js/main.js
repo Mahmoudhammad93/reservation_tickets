@@ -3,8 +3,8 @@
 
 $(function () {
     'use strict';
-    
-    //Smooth Scroll To Div 
+
+    //Smooth Scroll To Div
     $('.links a, .footer .logo img').click(function (e) {
         e.preventDefault();
         $('html, body').animate({
@@ -125,7 +125,6 @@ $(function () {
     });
 
     $(window).ready(function(){
-        $('#loading-page').fadeOut();
         $('body').removeClass('overflow');
     });
 });

@@ -3,7 +3,7 @@
 
 $(function () {
 	'use strict';
-	// Navbar Scroll 
+	// Navbar Scroll
     $(window).scroll(function () {
         var scroll = $(this).scrollTop();
         if (scroll > 100) {
@@ -13,7 +13,7 @@ $(function () {
         }
     });
 
-    //Smooth Scroll To Div 
+    //Smooth Scroll To Div
     $('.links a, .footer .logo img').click(function (e) {
         e.preventDefault();
         $('html, body').animate({
@@ -79,7 +79,7 @@ $(function () {
         'resizeDuration': 200,
         'wrapAround': true
 	});
-	
+
 	// Button Scroll Top
 	var scrollBotton = $("#scroll-top");
     $(window).scroll(function () {
@@ -94,7 +94,7 @@ $(function () {
         $("html,body").animate({scrollTop : 0}, 500);
     });
 
-    //Links Add Active 
+    //Links Add Active
     $('.links li a').click(function () {
         $(this).parent().addClass('active').siblings().removeClass('active');
     });
@@ -158,9 +158,4 @@ $(function () {
             });
         }
     })
-
-    // Page Loading
-    $(window).ready(function () {
-        $('.loading-page').fadeOut(1000);
-    });
 });

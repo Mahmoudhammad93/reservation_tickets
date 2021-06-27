@@ -32,9 +32,6 @@
             <div class="container-fluid">
                 <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
                 <ul class="navbar-nav navbar-nav-left">
-                    <li class="nav-item ml-0 mr-5 d-lg-flex d-none">
-                    <a href="#" class="nav-link horizontal-nav-left-menu"><i class="mdi mdi-format-list-bulleted"></i></a>
-                    </li>
                     <li class="nav-item dropdown">
                     <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
                         <i class="mdi mdi-bell mx-0"></i>
@@ -114,28 +111,6 @@
                     <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('layout')}}/images/logo-mini.svg" alt="logo"/></a>
                 </div>
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown  d-lg-flex d-none">
-                        <button type="button" class="btn btn-inverse-primary btn-sm">Product </button>
-                    </li>
-                    <li class="nav-item dropdown d-lg-flex d-none">
-                        <a class="dropdown-toggle show-dropdown-arrow btn btn-inverse-primary btn-sm" id="nreportDropdown" href="#" data-toggle="dropdown">
-                        Reports
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="nreportDropdown">
-                            <p class="mb-0 font-weight-medium float-left dropdown-header">Reports</p>
-                            <a class="dropdown-item">
-                            <i class="mdi mdi-file-pdf text-primary"></i>
-                            Pdf
-                            </a>
-                            <a class="dropdown-item">
-                            <i class="mdi mdi-file-excel text-primary"></i>
-                            Exel
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown d-lg-flex d-none">
-                        <button type="button" class="btn btn-inverse-primary btn-sm">Settings</button>
-                    </li>
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                         <span class="nav-profile-name">
@@ -179,7 +154,7 @@
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{route('users')}}" class="nav-link">
                             <i class="mdi mdi-account-multiple-outline menu-icon"></i>
                             <span class="menu-title">Users</span>
@@ -196,8 +171,14 @@
                             <i class="mdi mdi-ticket-account"></i>
                             <span class="menu-title">Tickets</span>
                         </a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a href="{{route('products')}}" class="nav-link">
+                            <i class="mdi mdi-ticket-account"></i>
+                            <span class="menu-title">Products</span>
+                        </a>
                     </li>
-                    <li class="nav-item messages">
+                    {{-- <li class="nav-item messages">
                         <a href="{{route('messages')}}" class="nav-link">
                             <i class="mdi mdi-email mx-0"></i>
                             <span class="menu-title">
@@ -207,7 +188,7 @@
                                 </div>
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             </nav>
@@ -216,81 +197,24 @@
         <div class="container-fluid page-body-wrapper">
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="row page-head">
-                        <div class="col-sm-6 mb-4 mb-xl-0">
-                          <div class="d-lg-flex align-items-center">
-                            <div>
-                              <h3 class="text-dark font-weight-bold mb-2">
-                                Hi, welcome back!
-                              </h3>
-                              <h6 class="font-weight-normal mb-2">
-                                Last login was 23 hours ago. View details
-                              </h6>
-                            </div>
-                            <div class="ml-lg-5 d-lg-flex d-none">
-                              <button type="button" class="btn bg-white btn-icon">
-                                <i class="mdi mdi-view-grid text-success"></i>
-                              </button>
-                              <button type="button" class="btn bg-white btn-icon ml-2">
-                                <i
-                                  class="mdi mdi-format-list-bulleted font-weight-bold text-primary"
-                                ></i>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="d-flex align-items-center justify-content-md-end">
-                            <div class="pr-1 mb-3 mb-xl-0">
-                              <button
-                                type="button"
-                                class="btn btn-outline-inverse-info btn-icon-text"
-                              >
-                                Feedback
-                                <i class="mdi mdi-message-outline btn-icon-append"></i>
-                              </button>
-                            </div>
-                            <div class="pr-1 mb-3 mb-xl-0">
-                              <button
-                                type="button"
-                                class="btn btn-outline-inverse-info btn-icon-text"
-                              >
-                                Help
-                                <i
-                                  class="mdi mdi-help-circle-outline btn-icon-append"
-                                ></i>
-                              </button>
-                            </div>
-                            <div class="pr-1 mb-3 mb-xl-0">
-                              <button
-                                type="button"
-                                class="btn btn-outline-inverse-info btn-icon-text"
-                              >
-                                Print
-                                <i class="mdi mdi-printer btn-icon-append"></i>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="content">
-                          <hr class="head-line">
-                          @yield('content')
-                      </div>
+                    <div class="content">
+                        <hr class="head-line">
+                        @yield('content')
+                    </div>
                 </div>
                 <!-- partial:partials/_footer.html -->
                 <footer class="footer">
                     <div class="footer-wrap">
                     <div class="w-100 clearfix">
                         <span class="d-block text-center text-sm-left d-sm-inline-block"
-                        >Copyright © 2018
-                        <a href="https://www.bootstrapdash.com/" target="_blank"
-                            >bootstrapdash</a
+                        >Copyright © 2021
+                        <a href="https://www.facebook.com/mahmoud.h.hammad.1/" target="_blank"
+                            >Mahmoud Hammad</a
                         >. All rights reserved.</span
                         >
                         <span
                         class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
-                        >Hand-crafted & made with <i class="mdi mdi-heart-outline"></i
+                        >Made with <i class="mdi mdi-heart-outline"></i
                         ></span>
                     </div>
                     </div>
